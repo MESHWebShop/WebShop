@@ -8,7 +8,9 @@ CREATE TABLE `meshwebshop`.`product` (
   `ProductManufactureId` VARCHAR(45) NOT NULL,
   `TaxClass` VARCHAR(45) NULL,
   `ManufactuerId` VARCHAR(45) NULL,
-  PRIMARY KEY (`ProductId`));
+  PRIMARY KEY (`ProductId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_swedish_ci;
 
 
@@ -94,17 +96,3 @@ CREATE TABLE `meshwebshop`.`category` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_swedish_ci;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
