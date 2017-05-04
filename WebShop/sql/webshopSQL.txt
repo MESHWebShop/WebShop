@@ -1,3 +1,5 @@
+CREATE SCHEMA `meshwebshop` DEFAULT CHARACTER SET utf8 COLLATE utf8_swedish_ci ;
+
 CREATE TABLE `meshwebshop`.`product` (
   `ProductId` INT NOT NULL AUTO_INCREMENT,
   `ProductName` VARCHAR(45) NOT NULL,
