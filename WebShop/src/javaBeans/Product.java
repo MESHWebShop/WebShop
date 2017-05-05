@@ -7,16 +7,12 @@ public class Product {
     private String productDescription;
     private double productPrice;
 
-    public Product(int productId, String productName, String productDescription, double productPrice) {
-        this.productId = productId;
-        this.productName = productName;
-        this.productDescription = productDescription;
-        this.productPrice = productPrice;
+    public Product() {
     }
 
-    public String toString() {
-        return productId + ": " + productName + ": " + productDescription + ": " + productPrice + ".";
-    }
+//    public String toString() {
+//        return productId + ": " + productName + ": " + productDescription + ": " + productPrice + ".";
+//    }
 
     public int getProductId() {
         return productId;
