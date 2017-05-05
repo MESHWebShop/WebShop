@@ -15,7 +15,7 @@ public class product {
     }
 
     public String toString() {
-        return productId + ": " + productName + " : " + productDescription + " : " + productPrice + ".";
+        return productId + ": " + productName + ": " + productDescription + ": " + productPrice + ".";
     }
 
     public int getProductId() {

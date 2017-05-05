@@ -6,8 +6,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Herman Dackenberg, Sven Andersson, Mats Norlund, Emil Bertilsson">
 <title>MESH Webshop</title>
+<link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-<br><br><br>
+<div id="container">
+<a href="#!/">Home</a>
+| <a href="#!/products">Products</a> 
+| <a href="#!/contact">Contact</a> 
+| <a href="#!/about">About</a>  
+
+<ng-view></ng-view>
+<!-- Här  kommer templates att laddas-->
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script src="scripts/routing.js"></script>
 </body>
 </html>
