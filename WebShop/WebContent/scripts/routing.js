@@ -28,10 +28,11 @@
 		$scope.title = "Contact";
 		$scope.description = "This is the Contact page";
 	});
-	routingApplication.controller("Controller", function($scope){
+	routingApplication.controller("aboutController", function($scope){
 		$scope.title = "About";
 		$scope.description = "This is the About page";
 	});
+	
 }());
 
 
