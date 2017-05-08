@@ -11,14 +11,14 @@ public class StoredItem {
      * Retrieves the item ID represented in the database
      */
     public int getId() {
-    return id;
+	return id;
     }
 
     /**
      * Sets the item ID represented in the datbase
      */
     public void setId(int id) {
-    this.id = id;
+	this.id = id;
     }
 
 }
