@@ -16,9 +16,9 @@ public class Product extends StoredItem {
     private String description;
 
     /**
-     * Product manafacturer
+     * Product manufacturer
      */
-    private String manafacturer;
+    private String manufacturer;
 
     /**
      * Product categories
@@ -33,71 +33,8 @@ public class Product extends StoredItem {
     /**
      * Product price
      */
-    private int price;
-
-    /**
-     * Retrieves the product name
-     *
-     * @return Product name
-     */
-    public String getName() {
-	return name;
-    }
+    private double price;
     
-    /**
-     * Retrieves the product description
-     *
-     * @return Product description
-     */
-    public String getDescription() {
-	return description;
-    }
-
-    /**
-     * Retrieves the product manafacturer
-     *
-     * @return Product manafacturer
-     */
-    public String getManafacturer() {
-	return manafacturer;
-    }
-
-    /**
-     * Retrieves the product categories
-     *
-     * @return Product categories
-     */
-    public String[] getCategories() {
-	return categories;
-    }
-
-    /**
-     * Retrieves the product images
-     *
-     * @return Product images
-     */
-    public ProductImage[] getImages() {
-	return images;
-    }
-
-    /**
-     * Retrieves the product price
-     *
-     * @return Product price
-     */
-    public int getPrice() {
-	return price;
-    }
-
-    /**
-     * Sets the product categories
-     *
-     * @param categories New product categories
-     */
-    public void setCategories(String[] categories) {
-	this.categories = categories;
-    }
-
     /**
      * Product constructor
      *
@@ -106,16 +43,95 @@ public class Product extends StoredItem {
      * @param manafacturer Product manafacturer
      * @param price Product price
      */
-    public Product(String name, String description, String manafacturer, int price) {
-	this.name = name;
-	this.description = description;
-	this.manafacturer = manafacturer;
-	this.price = price;
+    public Product(String name, String description, String manufacturer, int price) {
+    	this.name = name;
+    	this.description = description;
+    	this.manufacturer = manufacturer;
+    	this.price = price;
     }
     
-    /**
-     * 
-     */
     public Product() {}
+
+    /**
+     * Retrieves the product name
+     *
+     * @return Product name
+     */
+    public String getName() {
+    	return name;
+    }
+    
+	public void setName(String name) {
+		this.name = name;
+		
+	}
+    
+    /**
+     * Retrieves the product description
+     *
+     * @return Product description
+     */
+    public String getDescription() {
+    	return description;
+    }
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+    /**
+     * Retrieves the product manufacturer
+     *
+     * @return Product manufacturer
+     */
+    public String getManufacturer() {
+    	return manufacturer;
+    }
+    
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+
+    /**
+     * Retrieves the product categories
+     *
+     * @return Product categories
+     */
+    public String[] getCategories() {
+    	return categories;
+    }
+
+    /**
+     * Retrieves the product images
+     *
+     * @return Product images
+     */
+    public ProductImage[] getImages() {
+    	return images;
+    }
+
+    /**
+     * Retrieves the product price
+     *
+     * @return Product price
+     */
+    public double getPrice() {
+    	return price;
+    }
+    
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+    /**
+     * Sets the product categories
+     *
+     * @param categories New product categories
+     */
+    public void setCategories(String[] categories) {
+    	this.categories = categories;
+    }
+
+
 
 }
