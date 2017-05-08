@@ -16,7 +16,7 @@ public class Product extends StoredItem {
     private String description;
 
     /**
-     * Product manafacturer
+     * Product manufacturer
      */
     private String manufacturer;
 
@@ -33,7 +33,24 @@ public class Product extends StoredItem {
     /**
      * Product price
      */
-    private int price;
+    private double price;
+    
+    /**
+     * Product constructor
+     *
+     * @param name Product name
+     * @param description Product description
+     * @param manafacturer Product manafacturer
+     * @param price Product price
+     */
+    public Product(String name, String description, String manufacturer, int price) {
+    	this.name = name;
+    	this.description = description;
+    	this.manufacturer = manufacturer;
+    	this.price = price;
+    }
+    
+    public Product() {}
 
     /**
      * Retrieves the product name
@@ -44,6 +61,11 @@ public class Product extends StoredItem {
     	return name;
     }
     
+	public void setName(String name) {
+		this.name = name;
+		
+	}
+    
     /**
      * Retrieves the product description
      *
@@ -53,6 +75,10 @@ public class Product extends StoredItem {
     	return description;
     }
 
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
     /**
      * Retrieves the product manufacturer
      *
@@ -61,6 +87,10 @@ public class Product extends StoredItem {
     public String getManufacturer() {
     	return manufacturer;
     }
+    
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
+	}
 
     /**
      * Retrieves the product categories
@@ -85,9 +115,13 @@ public class Product extends StoredItem {
      *
      * @return Product price
      */
-    public int getPrice() {
+    public double getPrice() {
     	return price;
     }
+    
+	public void setPrice(double price) {
+		this.price = price;
+	}
 
     /**
      * Sets the product categories
@@ -98,24 +132,6 @@ public class Product extends StoredItem {
     	this.categories = categories;
     }
 
-    /**
-     * Product constructor
-     *
-     * @param name Product name
-     * @param description Product description
-     * @param manafacturer Product manafacturer
-     * @param price Product price
-     */
-    public Product(String name, String description, String manufacturer, int price) {
-	this.name = name;
-	this.description = description;
-	this.manufacturer = manufacturer;
-	this.price = price;
-    }
-    
-    /**
-     * 
-     */
-    public Product() {}
+
 
 }

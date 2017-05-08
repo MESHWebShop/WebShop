@@ -35,14 +35,14 @@ public class DatabaseHandler {
 	public Product getProductByName (String name, int price, String description) throws ClassNotFoundException, SQLException {
 		Product product = new Product();
 		ResultSet rs = executeQuery("SELECT * FROM product");
-			) {
-					rs.next();
-					product.setId(rs.getInt("id"));
-					product.setName(rs.getString("name"));
-					product.setDescription(rs.getString("description"));
-					product.setPrice(rs.getDouble("price"));
-					product.setManufacturer(rs.getString("manufacturer"));
-			}
+		
+		rs.next();
+		product.setId(rs.getInt("id"));
+		product.setName(rs.getString("name"));
+		product.setDescription(rs.getString("description"));
+		product.setPrice(rs.getDouble("price"));
+		product.setManufacturer(rs.getString("manufacturer"));
+		
 		return product;
 	}
 	
