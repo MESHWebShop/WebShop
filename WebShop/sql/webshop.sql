@@ -1,5 +1,7 @@
 CREATE DATABASE IF NOT EXISTS `webshop`;
 
+USE `webshop`;
+
 CREATE TABLE `webshop`.`account` (
 `id` INT NOT NULL AUTO_INCREMENT,
 `username` VARCHAR(60) NOT NULL,
