@@ -20,14 +20,18 @@ public class DatabaseHandler {
 		Class.forName("com.mysql.jdbc.Driver");
 		return DriverManager.getConnection(dbUri, user, password);
 	}
-		
+	
+	
+	//ResultSet kommer att stängas. Hantera genom att stänga ResultSet i den anropande metoden.
 	private ResultSet executeQuery(String query) {
 		
 		ResultSet rs;
+		Connection cn = null;
+		PreparedStatement pstmt = null;
 		
-		try (	Connection cn = getConnection();
-				PreparedStatement pstmt = cn.prepareStatement(query);
-				this.rs = pstmt.executeQuery()) {
+		try (	cn = getConnection();
+				pstmt = cn.prepareStatement(query);
+				rs = pstmt.executeQuery()) {
 		}
 		return rs;
 	}
@@ -46,20 +50,20 @@ public class DatabaseHandler {
 		return product;
 	}
 	
-//	public Product getProductByName (String name, int price, String description) throws ClassNotFoundException, SQLException {
-//		Product product = new Product();
-//		
-//		try (
-//			Connection cn = getConnection();
-//			PreparedStatement pstmt = cn.prepareStatement("SELECT id, name, description FROM product WHERE name = " + name);
-//			ResultSet rs = pstmt.executeQuery();
-//			) {
-//					rs.next();
-//					product.setProductName(rs.getString("name"));
-//					product.setProductPrice(rs.getInt("price"));
-//					product.setProductDescription(rs.getString("description"));
-//			}
-//		return product;
-//	}
+	public Product getProductByName (String name, int price, String description) throws ClassNotFoundException, SQLException {
+		Product product = new Product();
+		
+		try (
+			Connection cn = getConnection();
+			PreparedStatement pstmt = cn.prepareStatement("SELECT id, name, description FROM product WHERE name = " + name);
+			ResultSet rs = pstmt.executeQuery();
+			) {
+					rs.next();
+					product.setProductName(rs.getString("name"));
+					product.setProductPrice(rs.getInt("price"));
+					product.setProductDescription(rs.getString("description"));
+			}
+		return product;
+	}
 
 }
