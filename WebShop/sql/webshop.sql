@@ -1,9 +1,20 @@
 CREATE DATABASE IF NOT EXISTS `webshop`;
 
+CREATE TABLE `webshop`.`account` (
+`id` INT NOT NULL AUTO_INCREMENT,
+`username` VARCHAR(60) NOT NULL,
+`email` VARCHAR(60) NOT NULL,
+`password` VARCHAR(60) NOT NULL,
+PRIMARY KEY (`id`)
+);
+
 CREATE TABLE `webshop`.`customer` (
 `id` INT NOT NULL AUTO_INCREMENT,
 `account_id` INT NULL,
-PRIMARY KEY (`id`)
+`session` VARCHAR(32) NULL,
+PRIMARY KEY (`id`),
+UNIQUE INDEX `uix_customer_session` (`session`),
+CONSTRAINT `fk_customer_account_id` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE `webshop`.`category` (
@@ -52,6 +63,14 @@ CREATE TABLE `webshop`.`cart_product` (
 PRIMARY KEY (`id`),
 CONSTRAINT `fk_cart_product_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 CONSTRAINT `fk_cart_product_cart_id` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE `webshop`.`stored_product` (
+`id` INT NOT NULL AUTO_INCREMENT,
+`product_id` INT NOT NULL,
+`count` INT NULL DEFAULT 0,
+PRIMARY KEY (`id`),
+CONSTRAINT `fk_stored_product_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE `webshop`.`order` (
