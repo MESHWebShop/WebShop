@@ -5,9 +5,6 @@ package group1.webshop.api.beans;
  */
 public class StoredItem {
 
-    /**
-     * Item ID as represented in the database
-     */
     private int id;
 
     /**
@@ -20,7 +17,7 @@ public class StoredItem {
     /**
      * Sets the item ID represented in the datbase
      */
-    public void setId(int id) {
+    public int setId(int id) {
 	this.id = id;
     }
 
