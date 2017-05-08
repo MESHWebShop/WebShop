@@ -1,4 +1,4 @@
-package group1.webshop.api.servlet;
+package group1.webshop.api.servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
