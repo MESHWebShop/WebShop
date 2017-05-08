@@ -112,5 +112,10 @@ public class Product extends StoredItem {
 	this.manafacturer = manafacturer;
 	this.price = price;
     }
+    
+    /**
+     * 
+     */
+    public Product() {}
 
 }

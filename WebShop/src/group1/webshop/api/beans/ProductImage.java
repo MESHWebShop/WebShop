@@ -25,5 +25,10 @@ public class ProductImage extends StoredItem {
 	this.url = url;
 	this.type = type;
     }
+    
+    /**
+     * 
+     */
+    public ProductImage() {}
 
 }

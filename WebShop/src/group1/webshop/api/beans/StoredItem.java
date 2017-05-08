@@ -21,7 +21,7 @@ public class StoredItem {
      * Sets the item ID represented in the datbase
      */
     public void setId(int id) {
-	this.id = id;
+    	this.id = id;
     }
 
 }
