@@ -18,7 +18,7 @@ public class Product extends StoredItem {
     /**
      * Product manafacturer
      */
-    private String manafacturer;
+    private String manufacturer;
 
     /**
      * Product categories
@@ -41,7 +41,7 @@ public class Product extends StoredItem {
      * @return Product name
      */
     public String getName() {
-	return name;
+    	return name;
     }
     
     /**
@@ -50,16 +50,16 @@ public class Product extends StoredItem {
      * @return Product description
      */
     public String getDescription() {
-	return description;
+    	return description;
     }
 
     /**
-     * Retrieves the product manafacturer
+     * Retrieves the product manufacturer
      *
-     * @return Product manafacturer
+     * @return Product manufacturer
      */
-    public String getManafacturer() {
-	return manafacturer;
+    public String getManufacturer() {
+    	return manufacturer;
     }
 
     /**
@@ -68,7 +68,7 @@ public class Product extends StoredItem {
      * @return Product categories
      */
     public String[] getCategories() {
-	return categories;
+    	return categories;
     }
 
     /**
@@ -77,7 +77,7 @@ public class Product extends StoredItem {
      * @return Product images
      */
     public ProductImage[] getImages() {
-	return images;
+    	return images;
     }
 
     /**
@@ -86,7 +86,7 @@ public class Product extends StoredItem {
      * @return Product price
      */
     public int getPrice() {
-	return price;
+    	return price;
     }
 
     /**
@@ -95,7 +95,7 @@ public class Product extends StoredItem {
      * @param categories New product categories
      */
     public void setCategories(String[] categories) {
-	this.categories = categories;
+    	this.categories = categories;
     }
 
     /**
@@ -106,10 +106,10 @@ public class Product extends StoredItem {
      * @param manafacturer Product manafacturer
      * @param price Product price
      */
-    public Product(String name, String description, String manafacturer, int price) {
+    public Product(String name, String description, String manufacturer, int price) {
 	this.name = name;
 	this.description = description;
-	this.manafacturer = manafacturer;
+	this.manufacturer = manufacturer;
 	this.price = price;
     }
     
