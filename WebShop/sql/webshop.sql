@@ -37,7 +37,7 @@ PRIMARY KEY (`id`)
 CREATE TABLE `webshop`.`taxation` (
 `id` INT NOT NULL AUTO_INCREMENT,
 `name` INT NULL,
-`factor` INT NULL DEFAULT 1,
+`factor` DOUBLE NULL DEFAULT 1,
 PRIMARY KEY (`id`)
 );
 
