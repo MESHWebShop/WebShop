@@ -1,12 +1,10 @@
-package database;
+package group1.webshop.api.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import group1.webshop.api.beans.*;
 
@@ -21,18 +19,18 @@ public class DatabaseHandler {
 		return DriverManager.getConnection(dbUri, user, password);
 	}
 	
-	
 	//ResultSet kommer att stängas. Hantera genom att stänga ResultSet i den anropande metoden.
 	private ResultSet executeQuery(String query) {
 		
-		ResultSet rs;
-		Connection cn = null;
-		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
-		try (	cn = getConnection();
-				pstmt = cn.prepareStatement(query);
-				rs = pstmt.executeQuery()) {
+		try (Connection cn = getConnection()) {
+			PreparedStatement pstmt = cn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+		} catch (SQLException | ClassNotFoundException e) {
+			System.err.println("Error: " + e);
 		}
+
 		return rs;
 	}
 	
@@ -50,20 +48,4 @@ public class DatabaseHandler {
 		return product;
 	}
 	
-	public Product getProductByName (String name, int price, String description) throws ClassNotFoundException, SQLException {
-		Product product = new Product();
-		
-		try (
-			Connection cn = getConnection();
-			PreparedStatement pstmt = cn.prepareStatement("SELECT id, name, description FROM product WHERE name = " + name);
-			ResultSet rs = pstmt.executeQuery();
-			) {
-					rs.next();
-					product.setProductName(rs.getString("name"));
-					product.setProductPrice(rs.getInt("price"));
-					product.setProductDescription(rs.getString("description"));
-			}
-		return product;
-	}
-
 }
