@@ -63,7 +63,6 @@ public class Product extends StoredItem {
     
 	public void setName(String name) {
 		this.name = name;
-		
 	}
     
     /**
