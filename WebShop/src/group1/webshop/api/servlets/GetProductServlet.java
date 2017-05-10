@@ -16,14 +16,14 @@ import group1.webshop.api.database.DatabaseHandler;
  * Servlet implementation class ProductServlet
  */
 @WebServlet("/product")
-public class ProductServlet extends HttpServlet {
+public class GetProductServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductServlet() {
+    public GetProductServlet() {
         super();
     }
 
@@ -40,6 +40,8 @@ public class ProductServlet extends HttpServlet {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+    	
+    	request.setAttribute("product", product.getName());
     	
     	response.getWriter().append(product.getName());
 	
