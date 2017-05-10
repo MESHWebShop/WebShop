@@ -29,15 +29,15 @@
 		})
 	});
 
-	routingApplication.controller("homeController", function($scope) {
-		$scope.title = "Home";
-		$scope.description = "This is the Home page for MESH Webshop";
-	});
-
-	routingApplication.controller("productsController", function($scope) {
-		$scope.title = "Products";
-		$scope.description = "This is the Products page";
-	});
+//	routingApplication.controller("homeController", function($scope) {
+//		$scope.title = "Home";
+//		$scope.description = "This is the Home page for MESH Webshop";
+//	});
+//
+//	routingApplication.controller("productsController", function($scope) {
+//		$scope.title = "Products";
+//		$scope.description = "This is the Products page";
+//	});
 
 	routingApplication.controller("contactController", function($scope) {
 		$scope.title = "Contact";
