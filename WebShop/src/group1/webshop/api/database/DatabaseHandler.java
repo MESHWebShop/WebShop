@@ -52,9 +52,14 @@ public class DatabaseHandler {
 		return crs;
 	}
 	
+	public CachedRowSet callStoredProcedure(String storedProcedure, String argument) {
+		CachedRowSet crs = executeQuery("CALL " + storedProcedure + "('" + argument + "');");
+		return crs;
+	}
+	
 	public Product getProductByName (String name) throws ClassNotFoundException, SQLException {
 		
-		CachedRowSet crs = executeQuery("SELECT * FROM product");
+		CachedRowSet crs = callStoredProcedure("get_product_by_name", name);
 		crs.next();
 		
 		Product product = new Product();
@@ -63,8 +68,6 @@ public class DatabaseHandler {
 		product.setDescription(crs.getString("description"));
 		product.setPrice(crs.getDouble("price"));
 		product.setManufacturer(crs.getString("manafacturer"));
-		
-		System.out.println(product.getName());
 		
 		return product;
 	}
@@ -80,25 +83,13 @@ public class DatabaseHandler {
 		DatabaseHandler db = new DatabaseHandler();
 		Product product = null;
 		try {
-			product = db.getProductByName("produktnamn");
+			product = db.getProductByName("produkt2");
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 		}
 		
-//		Connection conn = null;
-//		try {
-//			conn = DriverManager.getConnection(dbUri, user, password);
-//			
-//			System.out.println("Connection Established to MYSQL Database");
-//			System.out.println(product.getName());
-//			
-//			
-//		} catch (SQLException e) {
-//			System.err.println(e.getMessage());
-//		}
-//		finally {
-//			conn.close();
-//		}
+		System.out.println(product.getName());
+
 	}
 	
 }

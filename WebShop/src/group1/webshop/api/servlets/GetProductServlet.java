@@ -38,7 +38,7 @@ public class GetProductServlet extends HttpServlet {
     	Product product = null;
     	
     	try {
-			product = db.getProductByName("produktnamn");
+			product = db.getProductByName("produkt2");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
