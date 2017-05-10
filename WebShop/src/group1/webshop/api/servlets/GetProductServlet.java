@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import group1.webshop.api.beans.Product;
 import group1.webshop.api.database.DatabaseHandler;
 
@@ -41,8 +43,12 @@ public class GetProductServlet extends HttpServlet {
 			e.printStackTrace();
 		}
     	
-    	request.setAttribute("product", product.getName());
-    	
+//    	String json = new Gson().toJson(product);
+//        response.setContentType("application/json");
+//        response.setCharacterEncoding("UTF-8");
+//        response.getWriter().write(json);
+
+    	//request.setAttribute("productName", product.getName());
     	response.getWriter().append(product.getName());
 	
     }
