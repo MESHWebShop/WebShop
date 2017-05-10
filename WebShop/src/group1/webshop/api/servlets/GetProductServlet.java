@@ -36,20 +36,21 @@ public class GetProductServlet extends HttpServlet {
 	throws ServletException, IOException {
     	DatabaseHandler db = new DatabaseHandler();
     	Product product = null;
+    	String productName = request.getParameter("name");
     	
     	try {
-			product = db.getProductByName("produkt2");
+			product = db.getProductByName(productName);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
     	
-//    	String json = new Gson().toJson(product);
-//        response.setContentType("application/json");
-//        response.setCharacterEncoding("UTF-8");
-//        response.getWriter().write(json);
+    	String json = new Gson().toJson(product);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(json);
 
-    	//request.setAttribute("productName", product.getName());
-    	response.getWriter().append(product.getName());
+//    	request.setAttribute("productName", product.getName());
+//    	response.getWriter().append(productName);
 	
     }
 
