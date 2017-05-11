@@ -91,5 +91,10 @@ public class DatabaseHandler {
 		System.out.println(product.getName());
 
 	}
+
+	public void removeProductFromCartById(int productId) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
