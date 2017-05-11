@@ -92,6 +92,50 @@ END$$
 DELIMITER ;
 
 
+USE `webshop`;
+DROP PROCEDURE IF EXISTS `add_cart_product`;
+
+DELIMITER $$
+USE `webshop`$$
+CREATE PROCEDURE `add_cart_product` (
+	IN id int(11),
+    IN product_id int(11),
+	in cart_id int(11),
+	in cout int (11)
+)
+BEGIN
+	INSERT INTO cart
+    VALUES (id,product_id,cart_id,cout);
+END$$
+
+DELIMITER ;
+
+
+USE `webshop`;
+DROP PROCEDURE IF EXISTS `add_product_to_cart_product`;
+
+DELIMITER $$
+USE `webshop`$$
+CREATE PROCEDURE `add_product_to_cart_product` (
+	
+    IN product_id int(11),
+    IN cart_id int(11),
+    IN count int(11) 
+   
+)
+BEGIN
+	INSERT INTO cart_product
+    VALUES (product_id,cart_id,cart_product.count);
+END$$
+
+DELIMITER ;
+
+
+
+
+
+
+
 
 DROP PROCEDURE IF EXISTS `get_product_by_name`;
 DELIMITER $$
