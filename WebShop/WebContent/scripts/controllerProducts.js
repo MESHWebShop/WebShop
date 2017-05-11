@@ -21,4 +21,33 @@
 		
 		$http.get("GetProducts").then(onProductsComplete, onError);
 	});
+	
+	controllerApplication.controller("productController", function($scope, $http,
+			$routeParams) {
+		$scope.name = "";
+		$scope.description = "";
+		$scope.price = "";
+
+		var productId = $routeParams.id;
+
+		// alert("productId : " + productId);
+
+		$scope.product = {
+			id : 0,
+			name : "",
+			price : "",
+		}
+
+		var onproductComplete = function(response) {
+			// alert ("Yay");
+			$scope.product = response.data;
+		}
+
+		var onError = function(reason) {
+			$scope.name = "Could not fetch data! " + reason.status;
+		}
+
+		var tmp = "GetProduct?id=" + productId;
+		$http.get(tmp).then(onproductComplete, onError);
+	});
 }());
