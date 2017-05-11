@@ -26,8 +26,7 @@
 	
 	
 	//Controller for product
-	controllerApplication.controller("productController", function($scope, $http,
-			$routeParams) {
+	controllerApplication.controller("productController", function($scope, $http, $routeParams) {
 		$scope.name = "";
 		$scope.description = "";
 		$scope.price = "";
@@ -39,6 +38,7 @@
 		$scope.product = {
 			id : 0,
 			name : "",
+			description : "",
 			price : "",
 		}
 
@@ -54,4 +54,5 @@
 		var tmp = "GetProduct?id=" + productId;
 		$http.get(tmp).then(onproductComplete, onError);
 	});
+	
 }());
