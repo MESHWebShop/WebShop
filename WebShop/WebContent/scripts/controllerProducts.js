@@ -1,7 +1,9 @@
 /**
- * Controller app for the products pages
+ * Controller app for the product pages
  */
 (function() {
+	
+	//Controller for Products
 	var controllerApplication = angular.module("routingApplication");
 
 	controllerApplication.controller("productsController", function($scope, $http) {
@@ -19,9 +21,11 @@
 			$scope.name = "Could not fetch data! " + reason.status;
 		}
 		
-		$http.get("GetProducts").then(onProductsComplete, onError);
+		$http.get("GetAllProducts").then(onProductsComplete, onError);
 	});
 	
+	
+	//Controller for product
 	controllerApplication.controller("productController", function($scope, $http,
 			$routeParams) {
 		$scope.name = "";
