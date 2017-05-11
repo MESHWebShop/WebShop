@@ -78,6 +78,17 @@ public class DatabaseHandler {
 	 * @param args
 	 * @throws SQLException
 	 */
+
+	public void removeProductFromCartById(int productId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public ArrayList<Product> getAllProducts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
 		
@@ -91,16 +102,6 @@ public class DatabaseHandler {
 		
 		System.out.println(product.getName());
 
-	}
-
-	public void removeProductFromCartById(int productId) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public ArrayList<Product> getAllProducts() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 }
