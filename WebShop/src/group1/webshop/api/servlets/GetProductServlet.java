@@ -17,7 +17,7 @@ import group1.webshop.api.database.DatabaseHandler;
 /**
  * Servlet implementation class ProductServlet
  */
-@WebServlet("/Product")
+@WebServlet("/GetProduct")
 public class GetProductServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -48,10 +48,6 @@ public class GetProductServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);
-
-//    	request.setAttribute("productName", product.getName());
-//    	response.getWriter().append(productName);
-	
     }
 
 }
