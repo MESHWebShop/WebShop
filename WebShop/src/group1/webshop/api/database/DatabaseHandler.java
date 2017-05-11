@@ -95,7 +95,7 @@ public class DatabaseHandler {
 		DatabaseHandler db = new DatabaseHandler();
 		Product product = null;
 		try {
-			product = db.getProductByName("produkt2");
+			product = db.getProductByName("skruvar");
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 		}
