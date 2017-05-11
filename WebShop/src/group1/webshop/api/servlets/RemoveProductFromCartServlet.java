@@ -37,19 +37,11 @@ public class RemoveProductFromCartServlet extends HttpServlet {
 	    	    	
 	    	    	int productId = Integer.valueOf(request.getParameter("id"));
 	    	    	
-	    	    	try {
-	    				db.removeProductFromCartById(productId);
-	    			} catch (ClassNotFoundException | SQLException e) {
-	    				e.printStackTrace();
-	    			}
+	    	    	db.removeProductFromCartById(productId);
 	    	    	
 	    	    	response.getWriter().write("Hejsan, du har kommit till RemoveProductFromCartServlet.");
-
-//	    	    	request.setAttribute("productName", product.getName());
-//	    	    	response.getWriter().append(productName);
-	    		
-	    	    }
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
