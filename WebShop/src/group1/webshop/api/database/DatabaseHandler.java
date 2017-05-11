@@ -68,7 +68,7 @@ public class DatabaseHandler {
 		product.setName(crs.getString("name"));
 		product.setDescription(crs.getString("description"));
 		product.setPrice(crs.getDouble("price"));
-		product.setManufacturer(crs.getString("manafacturer"));
+		product.setManufacturer(crs.getString("manufacturer"));
 		
 		return product;
 	}
