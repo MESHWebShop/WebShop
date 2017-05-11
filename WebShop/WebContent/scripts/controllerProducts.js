@@ -1,7 +1,9 @@
 /**
- * Controller app for the products pages
+ * Controller app for the product pages
  */
 (function() {
+	
+	//Controller for Products
 	var controllerApplication = angular.module("routingApplication");
 
 	controllerApplication.controller("productsController", function($scope, $http) {
@@ -19,11 +21,12 @@
 			$scope.name = "Could not fetch data! " + reason.status;
 		}
 		
-		$http.get("GetProducts").then(onProductsComplete, onError);
+		$http.get("GetAllProducts").then(onProductsComplete, onError);
 	});
 	
-	controllerApplication.controller("productController", function($scope, $http,
-			$routeParams) {
+	
+	//Controller for product
+	controllerApplication.controller("productController", function($scope, $http, $routeParams) {
 		$scope.name = "";
 		$scope.description = "";
 		$scope.price = "";
@@ -35,6 +38,7 @@
 		$scope.product = {
 			id : 0,
 			name : "",
+			description : "",
 			price : "",
 		}
 
@@ -50,4 +54,5 @@
 		var tmp = "GetProduct?id=" + productId;
 		$http.get(tmp).then(onproductComplete, onError);
 	});
+	
 }());
