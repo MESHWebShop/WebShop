@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
@@ -95,6 +96,11 @@ public class DatabaseHandler {
 	public void removeProductFromCartById(int productId) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public ArrayList<Product> getAllProducts() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
