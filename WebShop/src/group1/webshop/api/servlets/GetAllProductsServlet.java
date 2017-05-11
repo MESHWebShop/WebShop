@@ -2,6 +2,7 @@ package group1.webshop.api.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,13 +36,9 @@ public class GetAllProductsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	DatabaseHandler db = new DatabaseHandler();
     	Product product = null;
-    	ArrayList<Product> products = new ArrayList<Product>;
+    	ArrayList<Product> products = new ArrayList<Product>();
     	
-    	try {
-			products = db.getAllProducts();
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+    	products = db.getAllProducts();
     	
     	String json = new Gson().toJson(product);
         response.setContentType("application/json");
