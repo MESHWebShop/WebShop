@@ -48,10 +48,9 @@
 //		$scope.title = "About";
 //		$scope.description = "This is the About page";
 //	});
-
-	routingApplication.controller("shoppingCartController", function($scope) {
-		$scope.title = "ShoppingCart";
-		$scope.description = "This is the ShoppingCart page";
-	});
+//	routingApplication.controller("shoppingCartController", function($scope) {
+//		$scope.title = "ShoppingCart";
+//		$scope.description = "This is the ShoppingCart page";
+//	});
 
 }());
