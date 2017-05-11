@@ -13,7 +13,7 @@ import javax.sql.rowset.RowSetProvider;
 import group1.webshop.api.beans.*;
 
 public class DatabaseHandler {
-
+	
 	static final String user = "root";
 	static final String password = "root";
 	static final String dbUri = "jdbc:mysql://localhost:3306/webshop?useSSL=false";
