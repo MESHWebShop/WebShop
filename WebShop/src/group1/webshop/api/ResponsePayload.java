@@ -2,6 +2,7 @@ package group1.webshop.api;
 
 /**
  * Response payload class
+ * 
  * @author Emil Bertilsson
  */
 public class ResponsePayload {
@@ -18,18 +19,20 @@ public class ResponsePayload {
 
     /**
      * Gets the response error or null if there is no error
+     * 
      * @return Response error
      */
     public String getError() {
-	return err;
+        return err;
     }
 
     /**
      * Gets the response data
+     * 
      * @return Response data
      */
     public Object getData() {
-	return data;
+        return data;
     }
 
     /**
@@ -40,12 +43,13 @@ public class ResponsePayload {
 
     /**
      * Constructs a response payload
+     * 
      * @param err Response error or null
      * @param data Response data
      */
     public ResponsePayload(String err, Object data) {
-	this.err = err;
-	this.data = data;
+        this.err = err;
+        this.data = data;
     }
 
 }
