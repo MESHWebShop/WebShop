@@ -120,11 +120,11 @@ public class DatabaseHandler {
 	}
 	
 	public void removeProduct(int productId) {
-		CachedRowSet crs = callStoredProcedure("delete_product_by_id", String.valueOf(productId));
+		CachedRowSet crs = callStoredProcedure("delete_product_by_id", productId);
 	}
 
 	public void removeProductFromCartById(int productId) {
-		CachedRowSet crs = callStoredProcedure("delete_cart_product_by_id", String.valueOf(productId));
+		CachedRowSet crs = callStoredProcedure("delete_cart_product_by_id", productId);
 	}
 
 	// Testklass
@@ -146,6 +146,14 @@ public class DatabaseHandler {
 		}
 		
 		System.out.println(product.getName());
+	}
+
+	public void addCustomer(String username, String password) {
+		CachedRowSet crs = callStoredProcedure("addCustomer", username + ", " + password);
+	}
+
+	public void addProductToCart(String cartId, String productId) {
+		CachedRowSet crs = callStoredProcedure("add_product_to_cart", cartId + ", " + productId);
 	}
 
 }
