@@ -1,3 +1,5 @@
+Sven
+
 USE `webshop`;
 DROP PROCEDURE IF EXISTS `add_product`;
 
@@ -209,6 +211,37 @@ END$$
 DELIMITER ;
 
 
+
+DROP PROCEDURE IF EXISTS `get_all_products`;
+DELIMITER $$
+USE `webshop`$$
+CREATE PROCEDURE `get_all_products`()
+BEGIN
+	SELECT * FROM product ; 
+  END$$
+
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS `get_all_products_from_cart_product`;
+DELIMITER $$
+USE `webshop`$$
+CREATE PROCEDURE `get_all_products_from_cart_product`(IN cart_id int(11))
+
+BEGIN
+SELECT product.id ,product.name, product.description, product.price, product.manufacturer
+FROM product
+INNER JOIN cart_product
+ON cart_product.product_id= product.id;   
+END$$
+
+DELIMITER ;
+
+
+
+
+
 DROP PROCEDURE IF EXISTS `get_order_by_id`;
 DELIMITER $$
 USE `webshop`$$
@@ -332,7 +365,7 @@ DROP PROCEDURE IF EXISTS `delete_customer_by_id`;
 
 DELIMITER $$
 USE `webshop`$$
-CREATE PROCEDURE `delete_customer_by_id` (IN id int(11))
+CREATE PROCEDURE `delete_dustomer_by_id` (IN id int(11))
 BEGIN
 	DELETE FROM customer
     WHERE customer.id=id
@@ -432,6 +465,11 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+
+
+
+
 
 
 
