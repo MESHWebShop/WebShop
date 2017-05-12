@@ -58,6 +58,11 @@ public class DatabaseHandler {
 		return crs;
 	}
 	
+	public CachedRowSet callStoredProcedure(String storedProcedure) {
+		CachedRowSet crs = callStoredProcedure(storedProcedure, "");
+		return crs;
+	}
+	
 	public Product getProductByName (String name) throws ClassNotFoundException, SQLException {
 		
 		CachedRowSet crs = callStoredProcedure("get_product_by_name", name);
@@ -84,20 +89,40 @@ public class DatabaseHandler {
 		
 	}
 
-	public ArrayList<Product> getAllProducts() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Product> getAllProducts() throws SQLException {
+//		CachedRowSet crs = callStoredProcedure("get_all_products");
+		CachedRowSet crs = executeQuery("SELECT * FROM product");
+		
+		ArrayList<Product> products = new ArrayList<Product>();
+		
+		while (crs.next() == true) {
+			Product product = new Product();
+			product.setId(crs.getInt("id"));
+			product.setName(crs.getString("name"));
+			product.setDescription(crs.getString("description"));
+			product.setPrice(crs.getDouble("price"));
+			product.setManufacturer(crs.getString("manufacturer"));
+			products.add(product);
+		}
+		
+		return products;
 	}
 	
 	public static void main(String[] args) throws SQLException {
-		// TODO Auto-generated method stub
 		
 		DatabaseHandler db = new DatabaseHandler();
 		Product product = null;
+		ArrayList<Product> products = null;
+		
 		try {
 			product = db.getProductByName("skruvar");
+			products = db.getAllProducts();
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
+		}
+		
+		for(Product p : products) {
+			System.out.println(p.getName());
 		}
 		
 		System.out.println(product.getName());

@@ -1,31 +1,23 @@
 package group1.webshop.api.servlets;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
-import group1.webshop.api.beans.Product;
-import group1.webshop.api.database.DatabaseHandler;
-
 /**
- * Servlet implementation class GetAllProductsServlet
+ * Servlet implementation class GetAllProductsInCartServlet
  */
-@WebServlet("/GetAllProducts")
-public class GetAllProductsServlet extends HttpServlet {
+@WebServlet("/GetAllProductsInCart")
+public class GetAllProductsInCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetAllProductsServlet() {
+    public GetAllProductsInCartServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,19 +26,8 @@ public class GetAllProductsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	DatabaseHandler db = new DatabaseHandler();
-    	ArrayList<Product> products = null;
-		
-    	try {
-			products = db.getAllProducts();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-    	
-    	String json = new Gson().toJson(products);
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(json);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
