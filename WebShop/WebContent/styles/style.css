@@ -1,4 +1,4 @@
-body  {
+body {
 	text-align: center;
 	font-family: Arial, Helvetica, Sans Serif;
 }
@@ -8,5 +8,6 @@ body  {
 	font-size: 48px;
 }
 
-.tableProducts{
+.tableProduct {
+	text-align: left;
 }

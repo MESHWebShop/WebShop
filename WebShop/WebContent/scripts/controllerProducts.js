@@ -11,14 +11,6 @@
 		$scope.title = "Products";
 		$scope.description = "This is the Products page";
 		
-//		var product = {
-//				id : 0,
-//				name : "",
-//				description : "",
-//				price : "",
-//			};
-//			$scope.product = product;
-		
 		var products = [];
 		$scope.products = products;
 		

@@ -1,17 +1,18 @@
 <h1 class="title">{{title}}</h1>
-<h2>{{description}}</h2>
 
-<table class="tableProducts">
+<table class="tableProduct">
 	<thead>
 		<tr>
+			<td><b>Märke</b></td>
 			<td><b>Name</b></td>
-			<td><b>Description</b></td>
-			<td><b>Price</b></td>
+			<td><b>Beskrivning</b></td>
+			<td><b>Pris</b></td>
 		</tr>
 	</thead>
 	<tbody>
-		<tr data-ng-repeat="p in products | filter:search | orderBy:'name'" class="products">
-		<td><a data-ng-href="#!/product/{{ p.name }}">{{ p.name }}</a></td>
+		<tr data-ng-repeat="p in products | filter:search | orderBy:'manufacturer'" class="products">
+		<td><b>{{ p.manufacturer }}</b></td>
+		<td><a data-ng-href="#!/product/{{ p.name }}"><b>{{ p.name }}</b></a></td>
 		<td>{{ p.description }}</td>
 		<td>{{ p.price }}</td>
 		</tr>

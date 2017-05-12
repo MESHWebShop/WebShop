@@ -1,10 +1,9 @@
 <h1 class="title">{{title}}</h1>
 
-
 <table class="tableProduct">
 	<thead>
 		<tr><td></td>
-			<td><b>{{ product.name }}</b></td>
+			<td><b>{{ product.manufacturer }} {{ product.name }}</b></td>
 			<td></td>
 		</tr>
 	</thead>
@@ -12,7 +11,7 @@
 		<tr>
 		<td>{{ product.description }}</td>
 		<td>{{ product.price }}</td>
-		<td><form><input type="button" data-ng-click="putInCart()" value="Lägg i varukorg" /></form></td>
+		<td><button type="submit" data-ng-click="AddProductToCart()">Lägg i varukorg</button></td>
 		</tr>
 	</tbody>	
 </table>
