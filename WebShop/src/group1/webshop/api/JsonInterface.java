@@ -34,6 +34,7 @@ public class JsonInterface {
      * @param json JSON text
      * @return Data map
      */
+    @SuppressWarnings("unchecked")
     public static Map<String, Object> fromJson(String json)
             throws JsonSyntaxException {
         return (Map<String, Object>) GSON_OBJ.fromJson(json, Map.class);

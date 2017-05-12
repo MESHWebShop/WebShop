@@ -18,7 +18,7 @@ public class HttpInterface {
      * @param jsonMap JSON data map
      * @return Errors in JSON format
      */
-    public Map<String, String> validateJsonMap(JsonMapValidator validator, Map<String, Object> jsonMap) {
+    public Map<String, Object> validateJsonMap(JsonMapValidator validator, Map<String, Object> jsonMap) {
         return validator.validate(jsonMap);
     }
 
