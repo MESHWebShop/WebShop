@@ -1,4 +1,4 @@
-Sven
+sven
 
 USE `webshop`;
 DROP PROCEDURE IF EXISTS `add_product`;
@@ -114,11 +114,11 @@ DELIMITER ;
 
 
 USE `webshop`;
-DROP PROCEDURE IF EXISTS `add_product_to_cart_product`;
+DROP PROCEDURE IF EXISTS `add_product_to_cart`;
 
 DELIMITER $$
 USE `webshop`$$
-CREATE PROCEDURE `add_product_to_cart_product` (
+CREATE PROCEDURE `add_product_to_cart` (
 	
     IN product_id int(11),
     IN cart_id int(11),
@@ -224,10 +224,10 @@ DELIMITER ;
 
 
 
-DROP PROCEDURE IF EXISTS `get_all_products_from_cart_product`;
+DROP PROCEDURE IF EXISTS `get_all_products_from_cart`;
 DELIMITER $$
 USE `webshop`$$
-CREATE PROCEDURE `get_all_products_from_cart_product`(IN cart_id int(11))
+CREATE PROCEDURE `get_all_products_from_cart`(IN cart_id int(11))
 
 BEGIN
 SELECT product.id ,product.name, product.description, product.price, product.manufacturer
