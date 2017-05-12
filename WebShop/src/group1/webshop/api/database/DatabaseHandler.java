@@ -77,21 +77,6 @@ public class DatabaseHandler {
 		
 		return product;
 	}
-	
-	/**
-	 * Testklass
-	 * @param args
-	 * @throws SQLException
-	 */
-
-	public boolean removeProductFromCartById(int productId) {
-		
-		
-		CachedRowSet crs = callStoredProcedure("delete_cart_product_by_id", String.valueOf(productId));
-		
-		return true;
-		
-	}
 
 	public ArrayList<Product> getAllProducts() throws SQLException {
 //		CachedRowSet crs = callStoredProcedure("get_all_products");
@@ -108,10 +93,18 @@ public class DatabaseHandler {
 			product.setManufacturer(crs.getString("manufacturer"));
 			products.add(product);
 		}
-		
 		return products;
 	}
 	
+	public void removeProduct(int productId) {
+		CachedRowSet crs = callStoredProcedure("delete_product_by_id", String.valueOf(productId));
+	}
+
+	public void removeProductFromCartById(int productId) {
+		CachedRowSet crs = callStoredProcedure("delete_cart_product_by_id", String.valueOf(productId));
+	}
+
+	// Testklass
 	public static void main(String[] args) throws SQLException {
 		
 		DatabaseHandler db = new DatabaseHandler();
@@ -130,7 +123,6 @@ public class DatabaseHandler {
 		}
 		
 		System.out.println(product.getName());
-
 	}
 	
 }
