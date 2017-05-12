@@ -34,7 +34,7 @@ public class RemoveProductServlet extends HttpServlet {
     	
     	db.removeProduct(productId);
     	
-    	response.getWriter().write("Hejsan, du har kommit till RemoveProductFromCartServlet.");
+    	response.getWriter().write("Hejsan, du har kommit till RemoveProductServlet.");
 	}
 
 	/**
