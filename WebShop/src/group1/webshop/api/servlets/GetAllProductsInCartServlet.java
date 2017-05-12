@@ -36,9 +36,10 @@ public class GetAllProductsInCartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	DatabaseHandler db = new DatabaseHandler();
     	ArrayList<Product> products = null;
+    	int cartId = Integer.parseInt(request.getParameter("cartId"));
 		
     	try {
-			products = db.getAllProductsInCart();
+			products = db.getAllProductsInCart(cartId);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
