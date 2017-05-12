@@ -332,7 +332,7 @@ DROP PROCEDURE IF EXISTS `delete_customer_by_id`;
 
 DELIMITER $$
 USE `webshop`$$
-CREATE PROCEDURE `delete_dustomer_by_id` (IN id int(11))
+CREATE PROCEDURE `delete_customer_by_id` (IN id int(11))
 BEGIN
 	DELETE FROM customer
     WHERE customer.id=id
