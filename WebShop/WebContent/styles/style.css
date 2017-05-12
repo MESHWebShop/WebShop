@@ -1,8 +1,12 @@
 body  {
 	text-align: center;
+	font-family: Arial, Helvetica, Sans Serif;
 }
 
-h1 {
+.title {
 	font-family: 'Ravi Prakash';
 	font-size: 48px;
+}
+
+.tableProducts{
 }

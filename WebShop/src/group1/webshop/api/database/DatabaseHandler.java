@@ -84,8 +84,12 @@ public class DatabaseHandler {
 	 * @throws SQLException
 	 */
 
-	public void removeProductFromCartById(int productId) {
-		// TODO Auto-generated method stub
+	public boolean removeProductFromCartById(int productId) {
+		
+		
+		CachedRowSet crs = callStoredProcedure("delete_cart_product_by_id", String.valueOf(productId));
+		
+		return true;
 		
 	}
 

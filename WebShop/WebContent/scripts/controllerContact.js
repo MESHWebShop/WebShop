@@ -5,7 +5,7 @@
 	var controllerApplication = angular.module("routingApplication");
 
 	controllerApplication.controller("contactController", function($scope) {
-		$scope.title = "Home";
+		$scope.title = "Contact";
 		$scope.description = "This is the Home page for MESH Webshop";
 	});
 }());
