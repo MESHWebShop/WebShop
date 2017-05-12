@@ -11,7 +11,7 @@
 	</thead>
 	<tbody>
 		<tr data-ng-repeat="p in products | filter:search | orderBy:'name'" class="products">
-		<td><a data-ng-href="#!/product/{{ p.id }}">{{ p.name }}</a></td>
+		<td><a data-ng-href="#!/product/{{ p.name }}">{{ p.name }}</a></td>
 		<td>{{ p.description }}</td>
 		<td>{{ p.price }}</td>
 		</tr>
