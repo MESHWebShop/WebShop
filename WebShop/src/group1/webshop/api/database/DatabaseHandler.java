@@ -58,6 +58,11 @@ public class DatabaseHandler {
 		return crs;
 	}
 	
+	public CachedRowSet callStoredProcedure(String storedProcedure, int argument) {
+		CachedRowSet crs = callStoredProcedure(storedProcedure, Integer.toString(argument));
+		return crs;
+	}
+	
 	public CachedRowSet callStoredProcedure(String storedProcedure) {
 		CachedRowSet crs = callStoredProcedure(storedProcedure, "");
 		return crs;
@@ -85,6 +90,24 @@ public class DatabaseHandler {
 		ArrayList<Product> products = new ArrayList<Product>();
 		
 		while (crs.next() == true) {
+			Product product = new Product();
+			product.setId(crs.getInt("id"));
+			product.setName(crs.getString("name"));
+			product.setDescription(crs.getString("description"));
+			product.setPrice(crs.getDouble("price"));
+			product.setManufacturer(crs.getString("manufacturer"));
+			products.add(product);
+		}
+		return products;
+	}
+	
+	public ArrayList<Product> getAllProductsInCart(int cartId) throws SQLException {
+		CachedRowSet crs = callStoredProcedure("get_all_products_from_cart_product", cartId);
+//		CachedRowSet crs = executeQuery("SELECT * FROM cart_product");
+		
+		ArrayList<Product> products = new ArrayList<Product>();
+		
+		while (crs.next()) {
 			Product product = new Product();
 			product.setId(crs.getInt("id"));
 			product.setName(crs.getString("name"));
@@ -124,5 +147,5 @@ public class DatabaseHandler {
 		
 		System.out.println(product.getName());
 	}
-	
+
 }
