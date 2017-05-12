@@ -114,11 +114,11 @@ DELIMITER ;
 
 
 USE `webshop`;
-DROP PROCEDURE IF EXISTS `add_product_to_cart`;
+DROP PROCEDURE IF EXISTS `add_product_to_cart_product`;
 
 DELIMITER $$
 USE `webshop`$$
-CREATE PROCEDURE `add_product_to_cart` (
+CREATE PROCEDURE `add_product_to_cart_product` (
 	
     IN product_id int(11),
     IN cart_id int(11),
