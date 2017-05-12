@@ -39,7 +39,7 @@
 		$scope.title = "Product page";
 
 		var productId = $routeParams.id
-		alert("productName : " + productId);
+		//alert("productName : " + productId);
 
 		$scope.product = {
 			id : 0,
