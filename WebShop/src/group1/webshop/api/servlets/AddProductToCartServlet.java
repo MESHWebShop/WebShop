@@ -36,9 +36,8 @@ public class AddProductToCartServlet extends HttpServlet {
 		DatabaseHandler db = new DatabaseHandler();
     	String cartId = request.getParameter("cartId");
     	String productId = request.getParameter("productId");
-    	
+
     	db.addProductToCart(cartId, productId);
-    	
     	response.getWriter().write("AddProductToCartServlet");
 	}
 
