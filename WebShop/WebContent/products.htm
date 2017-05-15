@@ -7,6 +7,7 @@
 			<td><b>Name</b></td>
 			<td><b>Beskrivning</b></td>
 			<td><b>Pris</b></td>
+			<td></td>
 		</tr>
 	</thead>
 	<tbody>
@@ -15,6 +16,7 @@
 		<td><a data-ng-href="#!/product/{{ p.name }}"><b>{{ p.name }}</b></a></td>
 		<td>{{ p.description }}</td>
 		<td>{{ p.price }}</td>
+		<td><button type="submit" data-ng-click="AddProductToCart()">Lägg i varukorg</button></td>
 		</tr>
 	</tbody>	
 </table>
