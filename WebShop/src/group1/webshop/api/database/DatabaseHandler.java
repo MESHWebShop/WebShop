@@ -152,7 +152,11 @@ public class DatabaseHandler {
 		CachedRowSet crs = callStoredProcedure("add_account", username + ", " + password + ", " + email);
 	}
 
-	public void addProductToCart(String cartId, String productId, String count) {
-		CachedRowSet crs = callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + count);
+	public void addProductToCart(String productId, String cartId, String count) {
+		//CachedRowSet crs = callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + count);
+		
+		
+		CachedRowSet crs = executeQuery("INSERT INTO cart_product VALUES (" + productId + ", " + cartId + ", " + count + ");");
+		
 	}
 }
