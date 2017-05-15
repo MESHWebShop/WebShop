@@ -148,8 +148,8 @@ public class DatabaseHandler {
 		System.out.println(product.getName());
 	}
 
-	public void addCustomer(String username, String password, String email) {
-		CachedRowSet crs = callStoredProcedure("addCustomer", username + ", " + password + ", " + email);
+	public void addAccount(String username, String password, String email) {
+		CachedRowSet crs = callStoredProcedure("add_account", username + ", " + password + ", " + email);
 	}
 
 	public void addProductToCart(String cartId, String productId) {

@@ -1,30 +1,25 @@
 package group1.webshop.api.servlets;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
-import group1.webshop.api.beans.Product;
 import group1.webshop.api.database.DatabaseHandler;
 
 /**
- * Servlet implementation class AddUserServlet
+ * Servlet implementation class AddAccountServlet
  */
-@WebServlet("/AddUser")
-public class AddCustomerServlet extends HttpServlet {
+@WebServlet("/AddAccount")
+public class AddAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddCustomerServlet() {
+    public AddAccountServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,9 +33,8 @@ public class AddCustomerServlet extends HttpServlet {
     	String password = request.getParameter("password");
     	String email = request.getParameter("email");
     	
-    	db.addCustomer(username, password, email);
-    	
-    	response.getWriter().write("AddCustomerServlet");
+    	db.addAccount(username, password, email);
+    	response.getWriter().write("AddAccountServlet.");
 	}
 
 	/**
