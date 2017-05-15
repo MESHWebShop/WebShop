@@ -155,6 +155,11 @@ public class DatabaseHandler {
 	public void addProductToCart(String productId, String cartId, String count) {
 		//CachedRowSet crs = callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + count);
 		
+		// Arbetsgång:
+		// * Kolla om produkten existerar
+		// * Kolla om varukorgen existerar
+		// * Om varukorgen inte existerar, skapa en ny varukorg
+		// * Skapa ett nytt cart_product-entry
 		
 		CachedRowSet crs = executeQuery("INSERT INTO cart_product VALUES (" + productId + ", " + cartId + ", " + count + ");");
 		
