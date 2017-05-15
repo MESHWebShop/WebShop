@@ -36,8 +36,9 @@ public class AddCustomerServlet extends HttpServlet {
 		DatabaseHandler db = new DatabaseHandler();
     	String username = request.getParameter("username");
     	String password = request.getParameter("password");
+    	String email = request.getParameter("email");
     	
-    	db.addCustomer(username, password);
+    	db.addCustomer(username, password, email);
     	
     	response.getWriter().write("AddCustomerServlet");
 	}

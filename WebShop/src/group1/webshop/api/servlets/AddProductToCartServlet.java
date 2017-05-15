@@ -17,7 +17,7 @@ import group1.webshop.api.database.DatabaseHandler;
 /**
  * Servlet implementation class PutProductInCartServlet
  */
-@WebServlet("/PutProductInCart")
+@WebServlet("/AddProductToCart")
 public class AddProductToCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

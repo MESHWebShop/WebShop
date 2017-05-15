@@ -102,7 +102,7 @@ public class DatabaseHandler {
 	}
 	
 	public ArrayList<Product> getAllProductsInCart(int cartId) throws SQLException {
-		CachedRowSet crs = callStoredProcedure("get_all_products_from_cart_product", cartId);
+		CachedRowSet crs = callStoredProcedure("get_all_products_from_cart", cartId);
 //		CachedRowSet crs = executeQuery("SELECT * FROM cart_product");
 		
 		ArrayList<Product> products = new ArrayList<Product>();
