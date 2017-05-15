@@ -6,7 +6,7 @@
 
 	controllerApplication.controller("shoppingCartController", function($scope, $http, $routeParams) {
 		$scope.title = "ShoppingCart";
-//		$scope.description = "This is the ShoppingCart page";
+		
 		var productId = $routeParams.id
 		//alert("productName : " + productId);
 
