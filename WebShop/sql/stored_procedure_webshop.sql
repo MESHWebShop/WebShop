@@ -468,6 +468,25 @@ DELIMITER ;
 
 
 
+DROP PROCEDURE IF EXISTS `get_product_from_cart`;
+DELIMITER $$
+USE `webshop`$$
+CREATE PROCEDURE `get_product_from_cart` (IN id int(11))
+BEGIN
+
+SELECT  product.id ,product.name, product.description, product.price, product.manufacturer
+FROM cart_product
+INNER join product
+ON cart_product.product_id=product_id
+where cart_id=id
+    
+    COLLATE utf8_swedish_ci;
+END$$
+
+DELIMITER ;
+
+
+
 
 
 
