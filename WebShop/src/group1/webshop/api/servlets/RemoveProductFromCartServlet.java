@@ -37,7 +37,7 @@ public class RemoveProductFromCartServlet extends HttpServlet {
 	    	    	
 	    	    	int productId = Integer.valueOf(request.getParameter("id"));
 	    	    	
-	    	    	db.removeProductFromCartById(productId);
+	    	    	db.removeProductFromCartById(productId, cartId);
 	    	    	
 	    	    	response.getWriter().write("Hejsan, du har kommit till RemoveProductFromCartServlet.");
 	}

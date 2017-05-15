@@ -123,7 +123,7 @@ public class DatabaseHandler {
 		CachedRowSet crs = callStoredProcedure("delete_product_by_id", productId);
 	}
 
-	public void removeProductFromCartById(int productId) {
+	public void removeProductFromCartById(int productId, int cartId) {
 		CachedRowSet crs = callStoredProcedure("delete_cart_product_by_id", productId);
 	}
 
@@ -152,7 +152,7 @@ public class DatabaseHandler {
 		CachedRowSet crs = callStoredProcedure("add_account", username + ", " + password + ", " + email);
 	}
 
-	public void addProductToCart(String cartId, String productId) {
-		CachedRowSet crs = callStoredProcedure("add_product_to_cart", cartId + ", " + productId);
+	public void addProductToCart(String cartId, String productId, String count) {
+		CachedRowSet crs = callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + count);
 	}
 }
