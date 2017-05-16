@@ -53,9 +53,20 @@ public class DatabaseHandler {
 		return crs;
 	}
 	
-//	public CachedRowSet callStoredProcedure(String storedProcedure, ArrayList<String> arguments) {
-//		
-//	}
+	//TODO: Stäng ResultSet m.m.
+	private void executeUpdate(String update) throws SQLException {
+		PreparedStatement pstmt = null;
+		
+		try (Connection cn = getConnection()) {
+			pstmt = cn.prepareStatement(update);
+			pstmt.executeUpdate();
+		} catch (SQLException | ClassNotFoundException e) {
+			System.err.println("Error: " + e);
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+		}
+	}
 	
 //	public CachedRowSet callStoredProcedure(String storedProcedure, String argument) {
 //		CachedRowSet crs = executeQuery("CALL " + storedProcedure + "('" + argument + "');");
@@ -141,7 +152,11 @@ public class DatabaseHandler {
 		
 		DatabaseHandler db = new DatabaseHandler();
 		
-		db.addProductToCart("10000", "1", "1");
+//		db.addProductToCart("4", "1", "1");
+		db.addProductToCart("3", "1", "1");
+		
+//		ArrayList<Product> products = db.getAllProductsInCart(1);
+//		System.out.println(products.size());
 		
 //		Product product = null;
 //		ArrayList<Product> products = null;
@@ -164,29 +179,55 @@ public class DatabaseHandler {
 		CachedRowSet crs = callStoredProcedure("add_account", "'" + username + "'" + ", " + "'" + password + "'" + ", " + "'" + email + "'");
 	}
 
-	public void addProductToCart(String productId, String cartId, String count) {
+	public void addProductToCart(String productId, String cartId, String count) throws SQLException {
 		//CachedRowSet crs = callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + count);
 		//callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId + ", " + count);
 		//CachedRowSet crs = executeQuery("SELECT count FROM cart_product WHERE product_id = " + productId + " AND cart_id = " + cartId);
-
+		
 		// Kolla count för produkten.
 		// Om den finns, uppdatera count.
 		// Om den inte finns, lägg till.
 		
-		CachedRowSet crs = callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId);
-		int cartProductCount;
+//		executeQuery("CALL add_count_to_cart_product(3, 1, 2, 1);");
+//		System.out.println("Före get_count_from_cart_product");
 		
+		CachedRowSet crs = callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId);
+//		System.out.println("Efter get_count_from_cart_product");
+		//crs = callStoredProcedure("add_count_to_cart_product", productId + ", " + cartId + ", " + 1 + ", " + cartProductCount);
+//		executeQuery("CALL add_count_to_cart_product(3, 1, 2, 1);");
+		
+		int countFromCartProduct = 0;
+		try {
+			crs.first();
+			countFromCartProduct = crs.getInt("count");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+//		
+		
+		
+//
+//		int cartProductCount;
+//		
 		try {
 			if (crs.first()) {
 				System.out.println("Count: " + crs.getInt("count"));
-				cartProductCount = crs.getInt("count");
-				//callStoredProcedure("add_count_to_cart_product", productId + ", " + cartId + ", " + cartProductCount);
+				countFromCartProduct = crs.getInt("count");
+				//crs = callStoredProcedure("add_count_to_cart_product", productId + ", " + cartId + ", " + 1 + ", " + cartProductCount);
+				//executeUpdate("CALL add_count_to_cart_product(4, 1, 2, 1);");
+				executeUpdate("UPDATE cart_product SET count = " + (countFromCartProduct + 1) + 
+				" WHERE product_id = " + productId + " AND cart_id = " + cartId);
 			} else {
 				System.out.println("Else-satsen körs.");
 				//cartProductCount = 0;
-				String s = "add_product_to_cart_product" + "(" + productId + ", " + cartId + ", " + 1 + ")";
-				System.out.println(s);
-				callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + 1);
+				//String s = "add_product_to_cart_product" + "(" + productId + ", " + cartId + ", " + 1 + ")";
+				//System.out.println(s);
+//				callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + 1);
+				executeUpdate("INSERT INTO cart_product VALUES (null, " + productId + ", " + cartId + ", " + count + ")");
+//				executeUpdate("call add_product_to_cart_product(4, 1, 1)");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -198,5 +239,6 @@ public class DatabaseHandler {
 		// * Kolla om varukorgen existerar
 		// * Om varukorgen inte existerar, skapa en ny varukorg
 		// * Skapa ett nytt cart_product-entry
+
 	}
 }
