@@ -19,8 +19,8 @@ import group1.webshop.api.database.DatabaseHandler;
  */
 @WebServlet("/RemoveProductFromCart")
 public class RemoveProductFromCartServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -29,26 +29,30 @@ public class RemoveProductFromCartServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    	    	DatabaseHandler db = new DatabaseHandler();
-	    	    	
-	    	    	int productId = Integer.valueOf(request.getParameter("productId"));
-	    	    	int cartId = Integer.valueOf(request.getParameter("cartId"));
-	    	    	
-	    	    	db.removeProductFromCartById(productId, cartId);
-	    	    	
-	    	    	response.getWriter().write("Hejsan, du har kommit till RemoveProductFromCartServlet.");
-	}
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        DatabaseHandler db = new DatabaseHandler();
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        int productId = Integer.valueOf(request.getParameter("productId"));
+        int cartId = Integer.valueOf(request.getParameter("cartId"));
+
+        //db.removeProductFromCartById(productId, cartId);
+
+        response.getWriter().write("Hejsan, du har kommit till RemoveProductFromCartServlet.");
+    }
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet(request, response);
+    }
 
 }

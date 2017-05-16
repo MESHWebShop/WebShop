@@ -2,6 +2,7 @@ package group1.webshop.api;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -94,4 +95,45 @@ public class HttpInterface {
         }
     }
 
+    /**
+     * Validates and responds to the client if their request failed evaluation.
+     * On success the JSON data map is returned
+     *
+     * @param request HTTP request object
+     * @param response HTTP response object
+     * @param validator JSON map validator
+     * 
+     * @return JSON data map or null if the request was invalid
+     * @throws IOException
+     */
+    public static Map<String, Object> validateAndRespond(HttpServletRequest request,
+            HttpServletResponse response,
+            JsonMapValidator validator)
+            throws IOException {
+        Map<String, Object> jsonContent = null;
+
+        if ((jsonContent = HttpInterface.validateAsJson(request)) != null) {
+            final Map<String, Object> errObject = validator.validate(jsonContent);
+
+            if (errObject.isEmpty()) {
+                // Free of errors, proceed to further processing
+                return jsonContent;
+            } else {
+                // Contains errors, return the errors to the client
+                final Map<String, Object> tempMap = new HashMap<>();
+                tempMap.put("input", errObject);
+
+                HttpInterface.respond(response,
+                        422, // 422: Unprocessable entity
+                        new ResponsePayload(tempMap, null));
+                return null;
+            }
+        } else {
+            // Notify the source of the invalid request
+            HttpInterface.respond(response,
+                    400, // 400: Bad request
+                    new ResponsePayload("ERR_INVALIDREQUEST", null));
+            return null;
+        }
+    }
 }

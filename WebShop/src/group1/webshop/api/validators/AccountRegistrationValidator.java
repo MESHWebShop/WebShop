@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+/**
+ * Account registration validator map
+ * 
+ * @author Emil Bertilsson
+ */
 public class AccountRegistrationValidator extends JsonMapValidator {
 
     /**

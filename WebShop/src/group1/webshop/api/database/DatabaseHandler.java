@@ -6,12 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
 
-import group1.webshop.api.beans.*;
+import group1.webshop.api.beans.Account;
+import group1.webshop.api.beans.Product;
 
 public class DatabaseHandler {
 

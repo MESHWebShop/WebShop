@@ -60,10 +60,8 @@ public class AccountInterface {
                 acc.setEmail(email);
                 acc.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
 
-                int uid = -1;
-
                 try {
-                    uid = register(acc);
+                    register(acc);
                 } catch (SQLException e) {
                     e.printStackTrace();
                     errMap.put("ERR_MYSQL", "Server-side MySQL error!");
