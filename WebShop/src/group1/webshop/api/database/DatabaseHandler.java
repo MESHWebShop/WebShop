@@ -53,8 +53,17 @@ public class DatabaseHandler {
 		return crs;
 	}
 	
+//	public CachedRowSet callStoredProcedure(String storedProcedure, ArrayList<String> arguments) {
+//		
+//	}
+	
+//	public CachedRowSet callStoredProcedure(String storedProcedure, String argument) {
+//		CachedRowSet crs = executeQuery("CALL " + storedProcedure + "('" + argument + "');");
+//		return crs;
+//	}
+	
 	public CachedRowSet callStoredProcedure(String storedProcedure, String argument) {
-		CachedRowSet crs = executeQuery("CALL " + storedProcedure + "('" + argument + "');");
+		CachedRowSet crs = executeQuery("CALL " + storedProcedure + "(" + argument + ");");
 		return crs;
 	}
 	
@@ -132,7 +141,7 @@ public class DatabaseHandler {
 		
 		DatabaseHandler db = new DatabaseHandler();
 		
-		db.addProductToCart("3", "1", "1");
+		db.addProductToCart("10000", "1", "1");
 		
 //		Product product = null;
 //		ArrayList<Product> products = null;
@@ -152,12 +161,11 @@ public class DatabaseHandler {
 	}
 
 	public void addAccount(String username, String password, String email) {
-		CachedRowSet crs = callStoredProcedure("add_account", username + ", " + password + ", " + email);
+		CachedRowSet crs = callStoredProcedure("add_account", "'" + username + "'" + ", " + "'" + password + "'" + ", " + "'" + email + "'");
 	}
 
 	public void addProductToCart(String productId, String cartId, String count) {
 		//CachedRowSet crs = callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + count);
-		
 		//callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId + ", " + count);
 		//CachedRowSet crs = executeQuery("SELECT count FROM cart_product WHERE product_id = " + productId + " AND cart_id = " + cartId);
 
@@ -170,12 +178,14 @@ public class DatabaseHandler {
 		
 		try {
 			if (crs.first()) {
-				//System.out.println("Count: " + crs.getInt("count"));
+				System.out.println("Count: " + crs.getInt("count"));
 				cartProductCount = crs.getInt("count");
-				callStoredProcedure("add_count_to_cart_product", productId + ", " + cartId + ", " + cartProductCount);
+				//callStoredProcedure("add_count_to_cart_product", productId + ", " + cartId + ", " + cartProductCount);
 			} else {
-				//System.out.println("Else-satsen körs.");
-				cartProductCount = 0;
+				System.out.println("Else-satsen körs.");
+				//cartProductCount = 0;
+				String s = "add_product_to_cart_product" + "(" + productId + ", " + cartId + ", " + 1 + ")";
+				System.out.println(s);
 				callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + 1);
 			}
 		} catch (SQLException e) {
@@ -188,8 +198,5 @@ public class DatabaseHandler {
 		// * Kolla om varukorgen existerar
 		// * Om varukorgen inte existerar, skapa en ny varukorg
 		// * Skapa ett nytt cart_product-entry
-		
-		//CachedRowSet crs = executeQuery("INSERT INTO cart_product VALUES (" + productId + ", " + cartId + ", " + count + ");");
-		
 	}
 }

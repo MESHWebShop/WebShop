@@ -127,7 +127,7 @@ CREATE PROCEDURE `add_product_to_cart_product` (
 )
 BEGIN
 	INSERT INTO cart_product
-    VALUES (product_id,cart_id,cart_product.count);
+    VALUES (null, product_id,cart_id,cart_product.count);
 END$$
 
 DELIMITER ;
