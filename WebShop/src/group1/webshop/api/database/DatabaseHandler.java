@@ -159,8 +159,9 @@ public class DatabaseHandler {
 		//CachedRowSet crs = callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + count);
 		
 		//callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId + ", " + count);
-		CachedRowSet crs = executeQuery("SELECT count FROM cart_product WHERE product_id = " + productId + " AND cart_id = " + cartId);
+		//CachedRowSet crs = executeQuery("SELECT count FROM cart_product WHERE product_id = " + productId + " AND cart_id = " + cartId);
 		
+		CachedRowSet crs = callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId);
 		int cartProductCount;
 		
 		if (crs.first()) {
