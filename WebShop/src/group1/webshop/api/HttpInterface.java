@@ -36,10 +36,10 @@ public class HttpInterface {
      * 
      * @param response HTTP response object
      * @param status HTTP status code
-     * @param payload Response payload
+     * @param payload Result object
      * @throws IOException IO Error
      */
-    public static void respond(HttpServletResponse response, int status, ResponsePayload payload)
+    public static void respond(HttpServletResponse response, int status, ResultObject payload)
             throws IOException {
         response.setStatus(status);
         response.setContentType("application/json");
@@ -125,14 +125,14 @@ public class HttpInterface {
 
                 HttpInterface.respond(response,
                         422, // 422: Unprocessable entity
-                        new ResponsePayload(tempMap, null));
+                        new ResultObject(tempMap, null));
                 return null;
             }
         } else {
             // Notify the source of the invalid request
             HttpInterface.respond(response,
                     400, // 400: Bad request
-                    new ResponsePayload("ERR_INVALIDREQUEST", null));
+                    ResultObject.simpleWithError("ERR_INVALIDREQUEST", null));
             return null;
         }
     }

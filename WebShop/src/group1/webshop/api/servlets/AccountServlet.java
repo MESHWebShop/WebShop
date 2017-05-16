@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import group1.webshop.api.AccountInterface;
 import group1.webshop.api.HttpInterface;
-import group1.webshop.api.ResponsePayload;
+import group1.webshop.api.ResultObject;
 import group1.webshop.api.validators.AccountRegistrationValidator;
 
 /**
@@ -47,18 +47,18 @@ public class AccountServlet extends HttpServlet {
             final String password = (String) jsonContent.get("password");
 
             // Attempts to register the account
-            final Map<String, Object> registerErr = AccountInterface.tryRegister(username, email, password);
+            final ResultObject result = AccountInterface.register(username, email, password);
 
             int status = 201; // 201: Created
 
-            // Alter the HTTP status in case of conflict
-            if (!registerErr.isEmpty()) {
+            // Alter the HTTP status in case of errors
+            if (!result.hasErrors()) {
                 status = 409; // 409: Conflict
             }
 
             HttpInterface.respond(response,
                     status,
-                    new ResponsePayload(registerErr.isEmpty() ? null : registerErr, null));
+                    ResultObject.simpleWithErrorMap(result.getErrors()));
         }
     }
 

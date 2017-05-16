@@ -168,7 +168,7 @@ DROP PROCEDURE IF EXISTS `account_exists`;
 DELIMITER $$
 CREATE PROCEDURE `account_exists` (IN in_authentication VARCHAR(60))
 BEGIN
-	SELECT COUNT(*) AS `1` FROM `account` WHERE LCASE(`username`) = LCASE(in_username) OR LCASE(`email`) = LCASE(in_authentication) LIMIT 1;
+	SELECT COUNT(*) AS `1` FROM `account` WHERE LCASE(`username`) = LCASE(in_authentication) OR LCASE(`email`) = LCASE(in_authentication) LIMIT 1;
 END$$
 
 DELIMITER ;

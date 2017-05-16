@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import group1.webshop.api.AccountInterface;
 import group1.webshop.api.HttpInterface;
 import group1.webshop.api.validators.AuthenticationValidator;
 
@@ -32,6 +33,8 @@ public class AuthenticationServlet extends HttpServlet {
                 new AuthenticationValidator())) != null) {
             final String authentication = (String) jsonContent.get("authentication");
             final String password = (String) jsonContent.get("password");
+
+            System.out.println(AccountInterface.authenticate(authentication, password));
         }
     }
 

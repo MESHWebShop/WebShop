@@ -40,8 +40,8 @@ public class AccountInterface {
      * @param password Password
      * @return Error map
      */
-    public static Map<String, Object> tryRegister(String username, String email, String password) {
-        final Map<String, Object> errMap = new HashMap<>();
+    public static ResultObject register(String username, String email, String password) {
+        final ResultObject result = new ResultObject();
         final DatabaseHandler dbHandler = new DatabaseHandler();
 
         boolean exists = true;
@@ -60,17 +60,31 @@ public class AccountInterface {
                     register(acc);
                 } catch (SQLException e) {
                     e.printStackTrace();
-                    errMap.put("ERR_MYSQL", "Server-side MySQL error!");
+                    result.putError("ERR_MYSQL", "Server-side MySQL error!");
                 }
             } else {
-                errMap.put("ERR_USEREXISTS", "The user already exists");
+                result.putError("ERR_USEREXISTS", "The user already exists");
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            errMap.put("ERR_MYSQL", "Server-side MySQL error!");
+            result.putError("ERR_MYSQL", "Server-side MySQL error!");
         }
 
-        return errMap;
+        return result;
+    }
+
+    /**
+     * Attempts to authenticate
+     * 
+     * @param authentication
+     * @param password
+     * @return
+     */
+    public static ResultObject authenticate(String authentication, String password) {
+        final ResultObject result = new ResultObject();
+        final DatabaseHandler dbHandler = new DatabaseHandler();
+
+        return result;
     }
 
 }
