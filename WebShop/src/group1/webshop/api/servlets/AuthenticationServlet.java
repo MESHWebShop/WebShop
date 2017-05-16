@@ -1,6 +1,7 @@
 package group1.webshop.api.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import group1.webshop.api.AccountInterface;
 import group1.webshop.api.HttpInterface;
+import group1.webshop.api.ResultObject;
 import group1.webshop.api.validators.AuthenticationValidator;
 
 /**
@@ -34,7 +36,17 @@ public class AuthenticationServlet extends HttpServlet {
             final String authentication = (String) jsonContent.get("authentication");
             final String password = (String) jsonContent.get("password");
 
-            System.out.println(AccountInterface.authenticate(authentication, password));
+            ResultObject authResult = AccountInterface.authenticate(authentication, password);
+
+            if (!authResult.hasErrors()) {
+                HttpInterface.respond(response,
+                        200,
+                        ResultObject.simpleWithData("token", authResult.getData().get("token")));
+            } else {
+                HttpInterface.respond(response,
+                        422,
+                        ResultObject.simpleWithErrorMap(authResult.getErrors()));
+            }
         }
     }
 

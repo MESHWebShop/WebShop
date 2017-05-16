@@ -85,7 +85,7 @@ public class ResultObject {
      * @return True if the result object has errors, otherwise false
      */
     public boolean hasErrors() {
-        return err.isEmpty();
+        return !err.isEmpty();
     }
 
     /**
@@ -132,7 +132,7 @@ public class ResultObject {
      * @param value Data value
      */
     public void putData(String key, Object value) {
-        err.put(key, value);
+        data.put(key, value);
     }
 
     /**
@@ -150,6 +150,11 @@ public class ResultObject {
     public ResultObject(Map<String, Object> err, Map<String, Object> data) {
         this.err = err;
         this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "ResultObject [err=" + err + ", data=" + data + "]";
     }
 
 }

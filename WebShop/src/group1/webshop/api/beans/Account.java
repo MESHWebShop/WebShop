@@ -5,7 +5,7 @@ package group1.webshop.api.beans;
  *
  * @author Emil Bertilsson
  */
-public class Account {
+public class Account extends StoredItem {
 
     /**
      * Username
@@ -93,6 +93,11 @@ public class Account {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Account [username=" + username + ", email=" + email + ", password=" + password + "]";
     }
 
 }

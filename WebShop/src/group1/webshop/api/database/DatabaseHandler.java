@@ -12,6 +12,7 @@ import javax.sql.rowset.RowSetProvider;
 
 import group1.webshop.api.beans.Account;
 import group1.webshop.api.beans.Product;
+import group1.webshop.api.servlets.AccountServlet;
 
 public class DatabaseHandler {
 
@@ -323,8 +324,8 @@ public class DatabaseHandler {
         return callStoredProcedure("add_account", new Object[] {
                 null,
                 account.getUsername(),
-                account.getPassword(),
-                account.getEmail()
+                account.getEmail(),
+                account.getPassword()
         });
     }
 
@@ -389,4 +390,51 @@ public class DatabaseHandler {
         // * Skapa ett nytt cart_product-entry
 
     }
+
+    /**
+     * Gets an account from the database
+     * 
+     * @param authentication Username or email
+     * @return Account object
+     * @throws SQLException
+     */
+    public Account getAccount(String authentication)
+            throws SQLException {
+        CachedRowSet crs = callStoredProcedure("get_account_by_authentication", authentication);
+
+        final Account account = new Account();
+
+        if (crs.next()) {
+            account.setId(crs.getInt("id"));
+            account.setUsername(crs.getString("username"));
+            account.setPassword(crs.getString("password"));
+            account.setEmail(crs.getString("email"));
+        }
+
+        return account;
+    }
+
+    /**
+     * Gets an account from the database
+     * 
+     * @param id Account id
+     * @return Account object
+     * @throws SQLException
+     */
+    public Account getAccount(int id)
+            throws SQLException {
+        CachedRowSet crs = callStoredProcedure("get_account_by_id", id);
+
+        final Account account = new Account();
+
+        if (crs.next()) {
+            account.setId(crs.getInt("id"));
+            account.setUsername(crs.getString("username"));
+            account.setPassword(crs.getString("password"));
+            account.setEmail(crs.getString("email"));
+        }
+
+        return account;
+    }
+
 }

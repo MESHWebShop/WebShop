@@ -173,29 +173,22 @@ END$$
 
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS `get_account_by_username`;
+DROP PROCEDURE IF EXISTS `get_account_by_id`;
 DELIMITER $$
 USE `webshop`$$
-CREATE PROCEDURE `get_account_by_username` (IN username varchar(60))
+CREATE PROCEDURE `get_account_by_id` (IN in_id varchar(60))
 BEGIN
-	SELECT * FROM account
-    WHERE account.username=username
-    
-    COLLATE utf8_swedish_ci;
+    SELECT * FROM `account` WHERE `id` = in_id LIMIT 1;
 END$$
 
 DELIMITER ;
 
-
-DROP PROCEDURE IF EXISTS `get_account_by_email`;
+DROP PROCEDURE IF EXISTS `get_account_by_authentication`;
 DELIMITER $$
 USE `webshop`$$
-CREATE PROCEDURE `get_account_by_email` (IN username varchar(60))
+CREATE PROCEDURE `get_account_by_authentication` (IN in_authentication varchar(60))
 BEGIN
-	SELECT * FROM account
-    WHERE account.email=email
-    
-    COLLATE utf8_swedish_ci;
+    SELECT * FROM `account` WHERE LCASE(`username`) = LCASE(in_authentication) OR LCASE(`email`) = LCASE(in_authentication) LIMIT 1;
 END$$
 
 DELIMITER ;

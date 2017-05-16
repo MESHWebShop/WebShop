@@ -112,7 +112,8 @@ public class HttpInterface {
             throws IOException {
         Map<String, Object> jsonContent = null;
 
-        if ((jsonContent = HttpInterface.validateAsJson(request)) != null) {
+        if (request.getContentType().equals("application/json")
+                && (jsonContent = HttpInterface.validateAsJson(request)) != null) {
             final Map<String, Object> errObject = validator.validate(jsonContent);
 
             if (errObject.isEmpty()) {
@@ -132,7 +133,8 @@ public class HttpInterface {
             // Notify the source of the invalid request
             HttpInterface.respond(response,
                     400, // 400: Bad request
-                    ResultObject.simpleWithError("ERR_INVALIDREQUEST", null));
+                    ResultObject.simpleWithError("ERR_INVALIDREQUEST",
+                            "Request is not of type 'application/json' or JSON content is invalid"));
             return null;
         }
     }

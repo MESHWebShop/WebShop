@@ -31,4 +31,9 @@ public class ProductImage extends StoredItem {
      */
     public ProductImage() {}
 
+    @Override
+    public String toString() {
+        return "ProductImage [url=" + url + ", type=" + type + "]";
+    }
+
 }

@@ -1,5 +1,7 @@
 package group1.webshop.api.beans;
 
+import java.util.Arrays;
+
 /**
  * Product bean class
  */
@@ -34,7 +36,7 @@ public class Product extends StoredItem {
      * Product price
      */
     private double price;
-    
+
     /**
      * Product constructor
      *
@@ -44,13 +46,14 @@ public class Product extends StoredItem {
      * @param price Product price
      */
     public Product(String name, String description, String manufacturer, int price) {
-    	this.name = name;
-    	this.description = description;
-    	this.manufacturer = manufacturer;
-    	this.price = price;
+        this.name = name;
+        this.description = description;
+        this.manufacturer = manufacturer;
+        this.price = price;
     }
-    
-    public Product() {}
+
+    public Product() {
+    }
 
     /**
      * Retrieves the product name
@@ -58,38 +61,38 @@ public class Product extends StoredItem {
      * @return Product name
      */
     public String getName() {
-    	return name;
+        return name;
     }
-    
-	public void setName(String name) {
-		this.name = name;
-	}
-    
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     /**
      * Retrieves the product description
      *
      * @return Product description
      */
     public String getDescription() {
-    	return description;
+        return description;
     }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     /**
      * Retrieves the product manufacturer
      *
      * @return Product manufacturer
      */
     public String getManufacturer() {
-    	return manufacturer;
+        return manufacturer;
     }
-    
-	public void setManufacturer(String manufacturer) {
-		this.manufacturer = manufacturer;
-	}
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 
     /**
      * Retrieves the product categories
@@ -97,7 +100,7 @@ public class Product extends StoredItem {
      * @return Product categories
      */
     public String[] getCategories() {
-    	return categories;
+        return categories;
     }
 
     /**
@@ -106,7 +109,7 @@ public class Product extends StoredItem {
      * @return Product images
      */
     public ProductImage[] getImages() {
-    	return images;
+        return images;
     }
 
     /**
@@ -115,12 +118,12 @@ public class Product extends StoredItem {
      * @return Product price
      */
     public double getPrice() {
-    	return price;
+        return price;
     }
-    
-	public void setPrice(double price) {
-		this.price = price;
-	}
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     /**
      * Sets the product categories
@@ -128,9 +131,14 @@ public class Product extends StoredItem {
      * @param categories New product categories
      */
     public void setCategories(String[] categories) {
-    	this.categories = categories;
+        this.categories = categories;
     }
 
-
+    @Override
+    public String toString() {
+        return "Product [name=" + name + ", description=" + description + ", manufacturer=" + manufacturer
+                + ", categories=" + Arrays.toString(categories) + ", images=" + Arrays.toString(images) + ", price="
+                + price + "]";
+    }
 
 }
