@@ -502,7 +502,7 @@ CREATE PROCEDURE `add_count_to_cart_product`(
 BEGIN
     UPDATE cart_product
     set count= amount+count     
-    where cart_product.cart_id = cart_id;    
+    where cart_product.id = cart_id;    
     
 END$$
 DELIMITER ;
