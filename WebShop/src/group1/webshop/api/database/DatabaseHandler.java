@@ -231,7 +231,6 @@ public class DatabaseHandler {
 
     public ArrayList<Product> getAllProducts()
             throws SQLException {
-        //		CachedRowSet crs = callStoredProcedure("get_all_products");
         CachedRowSet crs = executeQuery("SELECT * FROM product");
 
         ArrayList<Product> products = new ArrayList<Product>();
@@ -266,7 +265,7 @@ public class DatabaseHandler {
         }
         return products;
     }
-
+    
     public void removeProduct(int productId)
             throws SQLException {
         CachedRowSet crs = callStoredProcedure("delete_product_by_id", productId);
@@ -323,7 +322,7 @@ public class DatabaseHandler {
         });
     }
 
-    public void addProductToCart(String productId, String cartId, String count) throws SQLException {
+    public void addProductToCart(String productId, String cartId, String count) {
         //CachedRowSet crs = callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + count);
         //callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId + ", " + count);
         //CachedRowSet crs = executeQuery("SELECT count FROM cart_product WHERE product_id = " + productId + " AND cart_id = " + cartId);
@@ -335,7 +334,13 @@ public class DatabaseHandler {
         //		executeQuery("CALL add_count_to_cart_product(3, 1, 2, 1);");
         //		System.out.println("Före get_count_from_cart_product");
 
-        CachedRowSet crs = callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId);
+        CachedRowSet crs = null;
+		try {
+			crs = callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
         //		System.out.println("Efter get_count_from_cart_product");
         //crs = callStoredProcedure("add_count_to_cart_product", productId + ", " + cartId + ", " + 1 + ", " + cartProductCount);
         //		executeQuery("CALL add_count_to_cart_product(3, 1, 2, 1);");
