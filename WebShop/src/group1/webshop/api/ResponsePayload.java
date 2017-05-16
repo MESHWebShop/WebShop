@@ -10,7 +10,7 @@ public class ResponsePayload {
     /**
      * Response error
      */
-    private String err;
+    private Object err;
 
     /**
      * Response content
@@ -22,7 +22,7 @@ public class ResponsePayload {
      * 
      * @return Response error
      */
-    public String getError() {
+    public Object getError() {
         return err;
     }
 
@@ -47,7 +47,7 @@ public class ResponsePayload {
      * @param err Response error or null
      * @param data Response data
      */
-    public ResponsePayload(String err, Object data) {
+    public ResponsePayload(Object err, Object data) {
         this.err = err;
         this.data = data;
     }
