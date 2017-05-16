@@ -433,8 +433,22 @@ END$$
 
 DELIMITER ;
 
+USE `webshop`;
+DROP PROCEDURE IF EXISTS `get_count_from_cart_product`;
 
+DELIMITER $$
+USE `webshop`$$
+CREATE PROCEDURE `get_count_from_cart_product` (
+	IN productid INT(11),
+    IN cartid INT(11)
+)
+BEGIN
+  SELECT count FROM cart_product
+  WHERE product_id = productid
+  AND cart_id = cartid;
+END$$
 
+DELIMITER ;
 
 
 
