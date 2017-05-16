@@ -151,11 +151,6 @@ public class DatabaseHandler {
         }
     }
 
-    //	public CachedRowSet callStoredProcedure(String storedProcedure, String argument) {
-    //		CachedRowSet crs = executeQuery("CALL " + storedProcedure + "('" + argument + "');");
-    //		return crs;
-    //	}
-
     /**
      * Calls a stored procedure with given parameters
      * 
@@ -257,9 +252,9 @@ public class DatabaseHandler {
             throws SQLException {
         CachedRowSet crs = callStoredProcedure("get_all_products_from_cart", cartId);
         //		CachedRowSet crs = executeQuery("SELECT * FROM cart_product");
-
+        
         ArrayList<Product> products = new ArrayList<Product>();
-
+       
         while (crs.next()) {
             Product product = new Product();
             product.setId(crs.getInt("id"));
@@ -354,11 +349,6 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
 
-        //		
-
-        //
-        //		int cartProductCount;
-        //		
         try {
             if (crs.first()) {
                 System.out.println("Count: " + crs.getInt("count"));
@@ -369,10 +359,6 @@ public class DatabaseHandler {
                         " WHERE product_id = " + productId + " AND cart_id = " + cartId);
             } else {
                 System.out.println("Else-satsen körs.");
-                //cartProductCount = 0;
-                //String s = "add_product_to_cart_product" + "(" + productId + ", " + cartId + ", " + 1 + ")";
-                //System.out.println(s);
-                //				callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + 1);
                 executeUpdate(
                         "INSERT INTO cart_product VALUES (null, " + productId + ", " + cartId + ", " + count + ")");
                 //				executeUpdate("call add_product_to_cart_product(4, 1, 1)");
@@ -381,12 +367,5 @@ public class DatabaseHandler {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-        // Gammal arbetsgång:
-        // * Kolla om produkten existerar
-        // * Kolla om varukorgen existerar
-        // * Om varukorgen inte existerar, skapa en ny varukorg
-        // * Skapa ett nytt cart_product-entry
-
     }
 }
