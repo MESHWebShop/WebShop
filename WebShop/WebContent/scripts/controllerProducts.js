@@ -61,8 +61,8 @@
 		}
 		
 		$scope.addProductToCart = function(id) {
-			alert("Product:" + id);
-			$http.get("AddProductToCart?productId=" + id).then(onAddProductToCartComplete, onError);
+			alert("Product: " + id + " Antal: " + $scope.cart_product.count);
+			$http.get("AddProductToCart?productId=").then(onAddProductToCartComplete, onError);
 		};
 
 		// Get product by name

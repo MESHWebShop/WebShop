@@ -14,11 +14,8 @@
 			<tr>
 				<td>{{ product.description }}</td>
 				<td>{{ product.price }}</td>
-				<td><input type="text" data-ng-model="cart_product.count"
-					name="count" value="1"></td>
-				<td><button type="submit"
-						data-ng-click="addProductToCart(product.id)">Lägg i
-						varukorg</button></td>
+				<td><input type="text" data-ng-model="cart_product.count" name="count" value="1"></td>
+				<td><button type="submit" data-ng-click="addProductToCart(product.id)">Lägg i varukorg</button></td>
 			</tr>
 		</tbody>
 	</table>
