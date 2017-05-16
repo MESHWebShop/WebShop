@@ -42,7 +42,6 @@ public class AccountServlet extends HttpServlet {
 
         if ((jsonContent = HttpInterface.validateAndRespond(request, response,
                 new AccountRegistrationValidator())) != null) {
-
             final String username = (String) jsonContent.get("username");
             final String email = (String) jsonContent.get("email");
             final String password = (String) jsonContent.get("password");

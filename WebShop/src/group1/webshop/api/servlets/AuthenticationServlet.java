@@ -30,7 +30,8 @@ public class AuthenticationServlet extends HttpServlet {
 
         if ((jsonContent = HttpInterface.validateAndRespond(request, response,
                 new AuthenticationValidator())) != null) {
-
+            final String authentication = (String) jsonContent.get("authentication");
+            final String password = (String) jsonContent.get("password");
         }
     }
 

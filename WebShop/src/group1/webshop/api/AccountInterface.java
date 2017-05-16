@@ -4,8 +4,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.sql.rowset.CachedRowSet;
-
 import org.mindrot.jbcrypt.BCrypt;
 
 import group1.webshop.api.beans.Account;
@@ -27,12 +25,10 @@ public class AccountInterface {
      * @return Account ID on success or -1 on failure
      * @throws SQLException SQL Error
      */
-    private static int register(Account account)
+    private static void register(Account account)
             throws SQLException {
         final DatabaseHandler dbHandler = new DatabaseHandler();
-        CachedRowSet result = dbHandler.addAccount(account);
-
-        return -1;
+        dbHandler.addAccount(account);
     }
 
     /**

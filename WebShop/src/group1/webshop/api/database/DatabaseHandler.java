@@ -220,12 +220,12 @@ public class DatabaseHandler {
     /**
      * Tests if an account exists in the database
      * 
-     * @param username Username
+     * @param authentication Username or email
      * @return True if the account exists, otherwise false
      * @throws SQLException SQL Error
      */
-    public boolean accountExists(String username) throws SQLException {
-        CachedRowSet crs = callStoredProcedure("account_exists", username);
+    public boolean accountExists(String authentication) throws SQLException {
+        CachedRowSet crs = callStoredProcedure("account_exists", authentication);
 
         if (crs.next()) {
             return crs.getBoolean(1);
