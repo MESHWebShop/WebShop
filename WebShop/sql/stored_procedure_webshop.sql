@@ -487,6 +487,27 @@ DELIMITER ;
 
 
 
+USE `webshop`;
+DROP PROCEDURE IF EXISTS `add_count_to_cart_product`;
+
+DELIMITER $$
+CREATE PROCEDURE `add_count_to_cart_product`(
+	
+    IN product_id int(11),
+    IN cart_id int(11),
+    IN amount int(11),
+    IN count int (11)
+   
+ )
+BEGIN
+    UPDATE cart_product
+    set count= amount+count     
+    where cart_product.cart_id = cart_id;    
+    
+END$$
+DELIMITER ;
+
+
 
 
 
