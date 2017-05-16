@@ -152,16 +152,39 @@ public class DatabaseHandler {
 		CachedRowSet crs = callStoredProcedure("add_account", username + ", " + password + ", " + email);
 	}
 
-	public void addProductToCart(String productId, String cartId, String count) {
+	public void addProductToCart(String productId, String cartId, String count) throws SQLException {
 		//CachedRowSet crs = callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + count);
 		
-		// Arbetsgång:
+		//callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId + ", " + count);
+		CachedRowSet crs = executeQuery("SELECT count FROM cart_product WHERE product_id = " + productId + " AND cart_id = " + cartId);
+		
+		int cartProductCount;
+		
+		if (crs.first()) {
+			cartProductCount = crs.getInt("count");
+			System.out.println("Count: " + crs.getInt("count"));
+			//callStoredProcedure("add_count_to_cart_product", cartProductCount);
+		} else {
+			cartProductCount = 0;
+		}
+		
+		
+		
+		
+		
+		
+		// Ny arbetsgång:
+		// Kolla count för produkten.
+		// Om den inte finns, lägg till.
+		// Om den finns, uppdatera count.
+		
+		// Gammal arbetsgång:
 		// * Kolla om produkten existerar
 		// * Kolla om varukorgen existerar
 		// * Om varukorgen inte existerar, skapa en ny varukorg
 		// * Skapa ett nytt cart_product-entry
 		
-		CachedRowSet crs = executeQuery("INSERT INTO cart_product VALUES (" + productId + ", " + cartId + ", " + count + ");");
+		//CachedRowSet crs = executeQuery("INSERT INTO cart_product VALUES (" + productId + ", " + cartId + ", " + count + ");");
 		
 	}
 }

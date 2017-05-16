@@ -35,13 +35,13 @@ public class RemoveProductFromCartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    	    	DatabaseHandler db = new DatabaseHandler();
 	    	    	
-	    	    	int productId = Integer.valueOf(request.getParameter("id"));
+	    	    	int productId = Integer.valueOf(request.getParameter("productId"));
+	    	    	int cartId = Integer.valueOf(request.getParameter("cartId"));
 	    	    	
 	    	    	db.removeProductFromCartById(productId, cartId);
 	    	    	
 	    	    	response.getWriter().write("Hejsan, du har kommit till RemoveProductFromCartServlet.");
 	}
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
