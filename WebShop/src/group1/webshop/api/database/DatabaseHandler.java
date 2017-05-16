@@ -160,29 +160,28 @@ public class DatabaseHandler {
 		
 		//callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId + ", " + count);
 		//CachedRowSet crs = executeQuery("SELECT count FROM cart_product WHERE product_id = " + productId + " AND cart_id = " + cartId);
+
+		// Kolla count för produkten.
+		// Om den finns, uppdatera count.
+		// Om den inte finns, lägg till.
 		
 		CachedRowSet crs = callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId);
 		int cartProductCount;
 		
 		try {
 			if (crs.first()) {
-				cartProductCount = crs.getInt("count");
 				//System.out.println("Count: " + crs.getInt("count"));
-				callStoredProcedure("add_count_to_cart_product", cartProductCount);
+				cartProductCount = crs.getInt("count");
+				callStoredProcedure("add_count_to_cart_product", productId + ", " + cartId + ", " + cartProductCount);
 			} else {
+				//System.out.println("Else-satsen körs.");
 				cartProductCount = 0;
 				callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + 1);
-				//System.out.println("Else-satsen körs.");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		// Ny arbetsgång:
-		// Kolla count för produkten.
-		// Om den inte finns, lägg till.
-		// Om den finns, uppdatera count.
 		
 		// Gammal arbetsgång:
 		// * Kolla om produkten existerar
