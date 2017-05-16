@@ -38,7 +38,7 @@ public class AccountServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
      *      response)
      */
-    protected void doPut(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Map<String, Object> jsonContent = null;
         JsonMapValidator validator = new AccountRegistrationValidator();
