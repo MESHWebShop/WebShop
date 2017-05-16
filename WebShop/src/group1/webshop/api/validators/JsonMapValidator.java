@@ -49,7 +49,7 @@ public abstract class JsonMapValidator {
      * @param key Key
      * @return Error map
      */
-    @SuppressWarnings({ "unchecked", "serial" })
+    @SuppressWarnings({ "unchecked" })
     private Map<String, Object> validate(Map<String, Object> validationMap, Map<String, Object> jsonMap) {
         final Map<String, Object> errMap = new HashMap<>();
 

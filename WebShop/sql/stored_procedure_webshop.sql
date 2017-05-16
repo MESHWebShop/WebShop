@@ -1,5 +1,3 @@
-sven
-
 USE `webshop`;
 DROP PROCEDURE IF EXISTS `add_product`;
 
@@ -166,7 +164,14 @@ END$$
 
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS `account_exists`;
+DELIMITER $$
+CREATE PROCEDURE `account_exists` (IN in_username VARCHAR(60))
+BEGIN
+	SELECT COUNT(*) AS `1` FROM `account` WHERE LCASE(`username`) = LCASE(in_username) LIMIT 1;
+END$$
 
+DELIMITER ;
 
 DROP PROCEDURE IF EXISTS `get_account_by_username`;
 DELIMITER $$

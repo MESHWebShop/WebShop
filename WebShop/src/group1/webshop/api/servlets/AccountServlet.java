@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import group1.webshop.api.AccountInterface;
 import group1.webshop.api.HttpInterface;
 import group1.webshop.api.JsonInterface;
 import group1.webshop.api.ResponsePayload;
@@ -32,7 +33,7 @@ public class AccountServlet extends HttpServlet {
     }
 
     /**
-     * Servlet for account registration
+     * Account registration
      * 
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
      *      response)
@@ -47,7 +48,23 @@ public class AccountServlet extends HttpServlet {
 
             if (errObject.isEmpty()) {
                 // Free of errors, proceed to further processing
-                // TODO: Implement account registration
+                final String username = (String) jsonContent.get("username");
+                final String email = (String) jsonContent.get("email");
+                final String password = (String) jsonContent.get("password");
+
+                // Attempts to register the account
+                final Map<String, Object> registerErr = AccountInterface.tryRegister(username, email, password);
+
+                int status = 201; // 201: Created
+
+                // Alter the HTTP status in case of conflict
+                if (!registerErr.isEmpty()) {
+                    status = 409; // 409: Conflict
+                }
+
+                HttpInterface.respond(response,
+                        status,
+                        new ResponsePayload(registerErr.isEmpty() ? null : registerErr, null));
             } else {
                 // Contains errors, return the errors to the client
                 final Map<String, Object> tempMap = new HashMap<>();
@@ -57,9 +74,7 @@ public class AccountServlet extends HttpServlet {
                         422, // 422: Unprocessable entity
                         new ResponsePayload(tempMap, null));
             }
-        } else
-
-        {
+        } else {
             // Notify the source of the invalid request
             HttpInterface.respond(response,
                     400, // 400: Bad request
