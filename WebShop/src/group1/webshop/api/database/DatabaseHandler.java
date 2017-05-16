@@ -155,7 +155,7 @@ public class DatabaseHandler {
 		CachedRowSet crs = callStoredProcedure("add_account", username + ", " + password + ", " + email);
 	}
 
-	public void addProductToCart(String productId, String cartId, String count) throws SQLException {
+	public void addProductToCart(String productId, String cartId, String count) {
 		//CachedRowSet crs = callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + count);
 		
 		//callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId + ", " + count);
@@ -164,13 +164,19 @@ public class DatabaseHandler {
 		CachedRowSet crs = callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId);
 		int cartProductCount;
 		
-		if (crs.first()) {
-			cartProductCount = crs.getInt("count");
-			//System.out.println("Count: " + crs.getInt("count"));
-			callStoredProcedure("add_count_to_cart_product", cartProductCount);
-		} else {
-			cartProductCount = 0;
-			//System.out.println("Else-satsen körs.");
+		try {
+			if (crs.first()) {
+				cartProductCount = crs.getInt("count");
+				//System.out.println("Count: " + crs.getInt("count"));
+				callStoredProcedure("add_count_to_cart_product", cartProductCount);
+			} else {
+				cartProductCount = 0;
+				callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + 1);
+				//System.out.println("Else-satsen körs.");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		// Ny arbetsgång:
