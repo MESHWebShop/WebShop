@@ -323,17 +323,10 @@ public class DatabaseHandler {
     }
 
     public void addProductToCart(String productId, String cartId, String count) {
-        //CachedRowSet crs = callStoredProcedure("add_product_to_cart_product", productId + ", " + cartId + ", " + count);
-        //callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId + ", " + count);
-        //CachedRowSet crs = executeQuery("SELECT count FROM cart_product WHERE product_id = " + productId + " AND cart_id = " + cartId);
-
-        // Kolla count för produkten.
-        // Om den finns, uppdatera count.
-        // Om den inte finns, lägg till.
-
-        //		executeQuery("CALL add_count_to_cart_product(3, 1, 2, 1);");
-        //		System.out.println("Före get_count_from_cart_product");
-
+        
+        
+        
+    	// Kolla count för en specifik product_cart-post
         CachedRowSet crs = null;
 		try {
 			crs = callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId);
@@ -341,9 +334,6 @@ public class DatabaseHandler {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-        //		System.out.println("Efter get_count_from_cart_product");
-        //crs = callStoredProcedure("add_count_to_cart_product", productId + ", " + cartId + ", " + 1 + ", " + cartProductCount);
-        //		executeQuery("CALL add_count_to_cart_product(3, 1, 2, 1);");
 
         int countFromCartProduct = 0;
         try {
@@ -355,18 +345,18 @@ public class DatabaseHandler {
         }
 
         try {
+        	// Om posten finns, addera 1 till count.
             if (crs.first()) {
                 System.out.println("Count: " + crs.getInt("count"));
                 countFromCartProduct = crs.getInt("count");
-                //crs = callStoredProcedure("add_count_to_cart_product", productId + ", " + cartId + ", " + 1 + ", " + cartProductCount);
-                //executeUpdate("CALL add_count_to_cart_product(4, 1, 2, 1);");
                 executeUpdate("UPDATE cart_product SET count = " + (countFromCartProduct + 1) +
                         " WHERE product_id = " + productId + " AND cart_id = " + cartId);
+            
+            // Om posten inte finns, skapa en ny cart_product.
             } else {
                 System.out.println("Else-satsen körs.");
                 executeUpdate(
                         "INSERT INTO cart_product VALUES (null, " + productId + ", " + cartId + ", " + count + ")");
-                //				executeUpdate("call add_product_to_cart_product(4, 1, 1)");
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
