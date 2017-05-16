@@ -39,12 +39,7 @@ public class AddProductToCartServlet extends HttpServlet {
 		String cartId = "1";
 		String count = "1";
 
-    	try {
-			db.addProductToCart(productId, cartId, count);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    	db.addProductToCart(productId, cartId, count);
     	response.getWriter().write("AddProductToCartServlet");
 	}
 
