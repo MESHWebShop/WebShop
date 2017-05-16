@@ -4,8 +4,9 @@
 (function() {
 
 	var controllerApplication = angular.module("routingApplication");
-
-	// Controller for Products
+	
+/*---------------------------------------------------------------------------------------*/
+/*----- Controller for Products ---------------------------------------------------------*/
 	controllerApplication.controller("productsController", function($scope,
 			$http) {
 		$scope.title = "Products";
@@ -29,8 +30,9 @@
 
 		$http.get("GetAllProducts").then(onProductsComplete, onError);
 	});
-
-	// Controller for product
+	
+/*---------------------------------------------------------------------------------------*/	
+/*----- Controller for product ----------------------------------------------------------*/
 	controllerApplication.controller("productController", function($scope,
 			$http, $routeParams) {
 		$scope.title = "Product page";
@@ -46,7 +48,6 @@
 		};
 
 		var onProductComplete = function(response) {
-			// alert ("Yay");
 			$scope.product = response.data;
 		}
 
@@ -54,10 +55,14 @@
 			$scope.name = "Could not fetch data! " + reason.status;
 		}
 
-		// Add product to cart
+		// Add product to cart		
+		var onAddProductToCartComplete = function(response) {
+			$scope.addedProduct = "Produkt lades till i kundvagnen.";
+		}
+		
 		$scope.addProductToCart = function(id) {
 			alert("Product:" + id);
-			$http.get("AddProductToCart?productId=" + id).then(onProductComplete, onError);
+			$http.get("AddProductToCart?productId=" + id).then(onAddProductToCartComplete, onError);
 		};
 
 		// Get product by name
