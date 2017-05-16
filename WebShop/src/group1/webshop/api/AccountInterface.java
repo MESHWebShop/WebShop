@@ -1,11 +1,7 @@
 package group1.webshop.api;
 
-import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
 import java.util.Date;
 
 import org.mindrot.jbcrypt.BCrypt;

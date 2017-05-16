@@ -12,7 +12,6 @@ import javax.sql.rowset.RowSetProvider;
 
 import group1.webshop.api.beans.Account;
 import group1.webshop.api.beans.Product;
-import group1.webshop.api.servlets.AccountServlet;
 
 public class DatabaseHandler {
 
