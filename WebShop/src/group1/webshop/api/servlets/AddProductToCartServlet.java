@@ -39,7 +39,12 @@ public class AddProductToCartServlet extends HttpServlet {
 		String count = "1";
     	String productId = request.getParameter("productId");
 
-    	db.addProductToCart(productId, cartId, count);
+    	try {
+			db.addProductToCart(productId, cartId, count);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	response.getWriter().write("AddProductToCartServlet");
 	}
 

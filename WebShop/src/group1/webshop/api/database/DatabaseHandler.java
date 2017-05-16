@@ -131,21 +131,24 @@ public class DatabaseHandler {
 	public static void main(String[] args) throws SQLException {
 		
 		DatabaseHandler db = new DatabaseHandler();
-		Product product = null;
-		ArrayList<Product> products = null;
 		
-		try {
-			product = db.getProductByName("skruvar");
-			products = db.getAllProducts();
-		} catch (ClassNotFoundException e1) {
-			e1.printStackTrace();
-		}
+		db.addProductToCart("3", "1", "1");
 		
-		for(Product p : products) {
-			System.out.println(p.getName());
-		}
-		
-		System.out.println(product.getName());
+//		Product product = null;
+//		ArrayList<Product> products = null;
+//		
+//		try {
+//			product = db.getProductByName("skruvar");
+//			products = db.getAllProducts();
+//		} catch (ClassNotFoundException e1) {
+//			e1.printStackTrace();
+//		}
+//		
+//		for(Product p : products) {
+//			System.out.println(p.getName());
+//		}
+//		
+//		System.out.println(product.getName());
 	}
 
 	public void addAccount(String username, String password, String email) {
@@ -162,16 +165,12 @@ public class DatabaseHandler {
 		
 		if (crs.first()) {
 			cartProductCount = crs.getInt("count");
-			System.out.println("Count: " + crs.getInt("count"));
-			//callStoredProcedure("add_count_to_cart_product", cartProductCount);
+			//System.out.println("Count: " + crs.getInt("count"));
+			callStoredProcedure("add_count_to_cart_product", cartProductCount);
 		} else {
 			cartProductCount = 0;
+			//System.out.println("Else-satsen körs.");
 		}
-		
-		
-		
-		
-		
 		
 		// Ny arbetsgång:
 		// Kolla count för produkten.
