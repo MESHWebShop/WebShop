@@ -7,16 +7,15 @@
 	
 /*---------------------------------------------------------------------------------------*/
 /*----- Controller for Products ---------------------------------------------------------*/
-	controllerApplication.controller("productsController", function($scope,
-			$http) {
+	controllerApplication.controller("productsController", function($scope, $http) {
 		$scope.title = "Products";
 
 		// Add product to cart
 		$scope.addProductToCart = function(id) {
-			alert("Product:" + id);
-			// $scope.product = response.data;
+		//alert("Product:" + id);
+		// $scope.product = response.data;
 		}
-
+		
 		var products = [];
 		$scope.products = products;
 
@@ -33,12 +32,13 @@
 	
 /*---------------------------------------------------------------------------------------*/	
 /*----- Controller for product ----------------------------------------------------------*/
-	controllerApplication.controller("productController", function($scope,
-			$http, $routeParams) {
+	controllerApplication.controller("productController", function($scope, $http, $routeParams) {
 		$scope.title = "Product page";
 
 		var productId = $routeParams.id
-		// alert("productName : " + productId);
+		
+		
+		alert("Produkt ID: " + productId);
 
 		$scope.product = {
 			id : 0,
