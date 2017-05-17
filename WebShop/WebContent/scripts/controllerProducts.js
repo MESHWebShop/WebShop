@@ -61,8 +61,10 @@
 		}
 		
 		$scope.addProductToCart = function(id) {
-			alert("Prod:"+productId + " Antal: " + $scope.cart_product.count);
-			$http.get("AddProductToCart?productId="+productId+"&antal="+$scope.cart_product.count).then(onAddProductToCartComplete, onError);
+			//alert("Prod:"+productId + " Antal: " + $scope.cart_product.count);
+			var tmp = "AddProductToCart?product_id="+productId+"&count="+$scope.cart_product.count;
+			//alert(tmp);
+			$http.get(tmp).then(onAddProductToCartComplete, onError);
 		};
 
 		// Get product by name
