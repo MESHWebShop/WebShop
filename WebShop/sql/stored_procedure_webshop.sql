@@ -296,7 +296,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_all_products_from_cart_product`(IN cart_id int(11))
 BEGIN
-SELECT product.id ,product.name, product.description, product.price, product.manufacturer
+SELECT product.id ,product.name, product.description, product.price, product.manufacturer,cart_product.count
 FROM product
 INNER JOIN cart_product
 ON cart_product.product_id= product.id;   
