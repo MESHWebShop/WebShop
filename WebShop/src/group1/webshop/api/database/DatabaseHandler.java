@@ -288,9 +288,14 @@ public class DatabaseHandler {
         CachedRowSet crs = callStoredProcedure("delete_product_by_id", productId);
     }
 
-    public void removeProductFromCartById(int productId, int cartId)
-            throws SQLException {
-        CachedRowSet crs = callStoredProcedure("delete_cart_product_by_id", productId);
+    public void removeProductFromCartById(int productId, int cartId) {
+        try {
+        	executeUpdate("DELETE FROM cart_product WHERE product_id = " + productId + " AND cart_id = " + cartId + ";");
+			//CachedRowSet crs = callStoredProcedure("delete_cart_product_by_id", productId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     /**
