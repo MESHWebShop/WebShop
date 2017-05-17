@@ -15,8 +15,8 @@ import group1.webshop.api.beans.Product;
 
 public class DatabaseHandler {
 
-    static final String user = "webshop";
-    static final String password = "webshop";
+    static final String user = "root";
+    static final String password = "root";
     static final String dbUri = "jdbc:mysql://localhost:3306/webshop?useSSL=false";
 
     /**
@@ -280,31 +280,39 @@ public class DatabaseHandler {
      * TODO: (Tillagd av emil)
      * Skriv om detta som ett test case i api.tests
      */
-    //    public static void main(String[] args) throws SQLException {
-    //        DatabaseHandler db = new DatabaseHandler();
-    //
-    //        //		db.addProductToCart("4", "1", "1");
-    //        db.addProductToCart("3", "1", "1");
-    //
-    //        //		ArrayList<Product> products = db.getAllProductsInCart(1);
-    //        //		System.out.println(products.size());
-    //
-    //        //		Product product = null;
-    //        //		ArrayList<Product> products = null;
-    //        //		
-    //        //		try {
-    //        //			product = db.getProductByName("skruvar");
-    //        //			products = db.getAllProducts();
-    //        //		} catch (ClassNotFoundException e1) {
-    //        //			e1.printStackTrace();
-    //        //		}
-    //        //		
-    //        //		for(Product p : products) {
-    //        //			System.out.println(p.getName());
-    //        //		}
-    //        //		
-    //        //		System.out.println(product.getName());
-    //    }
+        public static void main(String[] args) throws SQLException {
+            DatabaseHandler db = new DatabaseHandler();
+            
+            Connection cn = db.getConnection();
+            if (cn != null) {
+            	System.out.println("Connection successful.");
+            } else {
+            	System.out.println("Connection not successful.");
+            }
+            
+    
+            //		db.addProductToCart("4", "1", "1");
+            //db.addProductToCart("3", "1", "1");
+    
+            //		ArrayList<Product> products = db.getAllProductsInCart(1);
+            //		System.out.println(products.size());
+    
+            //		Product product = null;
+            //		ArrayList<Product> products = null;
+            //		
+            //		try {
+            //			product = db.getProductByName("skruvar");
+            //			products = db.getAllProducts();
+            //		} catch (ClassNotFoundException e1) {
+            //			e1.printStackTrace();
+            //		}
+            //		
+            //		for(Product p : products) {
+            //			System.out.println(p.getName());
+            //		}
+            //		
+            //		System.out.println(product.getName());
+        }
 
     /**
      * Adds an account to the database
@@ -323,8 +331,6 @@ public class DatabaseHandler {
     }
 
     public void addProductToCart(String productId, String cartId, String count) {
-        
-        
         
     	// Kolla count för en specifik product_cart-post
         CachedRowSet crs = null;
