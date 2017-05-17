@@ -277,44 +277,6 @@ public class DatabaseHandler {
     }
 
     /**
-     * TODO: (Tillagd av emil)
-     * Skriv om detta som ett test case i api.tests
-     */
-        public static void main(String[] args) throws SQLException {
-            DatabaseHandler db = new DatabaseHandler();
-            
-            Connection cn = db.getConnection();
-            if (cn != null) {
-            	System.out.println("Connection successful.");
-            } else {
-            	System.out.println("Connection not successful.");
-            }
-            
-    
-            //		db.addProductToCart("4", "1", "1");
-            //db.addProductToCart("3", "1", "1");
-    
-            //		ArrayList<Product> products = db.getAllProductsInCart(1);
-            //		System.out.println(products.size());
-    
-            //		Product product = null;
-            //		ArrayList<Product> products = null;
-            //		
-            //		try {
-            //			product = db.getProductByName("skruvar");
-            //			products = db.getAllProducts();
-            //		} catch (ClassNotFoundException e1) {
-            //			e1.printStackTrace();
-            //		}
-            //		
-            //		for(Product p : products) {
-            //			System.out.println(p.getName());
-            //		}
-            //		
-            //		System.out.println(product.getName());
-        }
-
-    /**
      * Adds an account to the database
      * 
      * @param account Account
@@ -331,11 +293,16 @@ public class DatabaseHandler {
     }
 
     public void addProductToCart(String productId, String cartId, String count) {
-        
-    	// Kolla count för en specifik product_cart-post
+//    	new Object[] {
+//                null,
+//                account.getUsername(),
+//                account.getEmail(),
+//                account.getPassword()
+//        }
+    	// Läs in count för en specifik product_cart-post
         CachedRowSet crs = null;
 		try {
-			crs = callStoredProcedure("get_count_from_cart_product", productId + ", " + cartId);
+			crs = callStoredProcedure("get_count_from_cart_product", new Object[] {productId, cartId});
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -416,4 +383,42 @@ public class DatabaseHandler {
         return account;
     }
 
+    /**
+     * TODO: (Tillagd av emil)
+     * Skriv om detta som ett test case i api.tests
+     */
+        public static void main(String[] args) throws SQLException {
+            DatabaseHandler db = new DatabaseHandler();
+            
+            Connection cn = db.getConnection();
+            if (cn != null) {
+            	System.out.println("Connection successful.");
+            } else {
+            	System.out.println("Connection not successful.");
+            }
+            
+            db.addProductToCart("3", "1", "1");
+            //		db.addProductToCart("4", "1", "1");
+            //db.addProductToCart("3", "1", "1");
+    
+            //		ArrayList<Product> products = db.getAllProductsInCart(1);
+            //		System.out.println(products.size());
+    
+            //		Product product = null;
+            //		ArrayList<Product> products = null;
+            //		
+            //		try {
+            //			product = db.getProductByName("skruvar");
+            //			products = db.getAllProducts();
+            //		} catch (ClassNotFoundException e1) {
+            //			e1.printStackTrace();
+            //		}
+            //		
+            //		for(Product p : products) {
+            //			System.out.println(p.getName());
+            //		}
+            //		
+            //		System.out.println(product.getName());
+        }
+    
 }
