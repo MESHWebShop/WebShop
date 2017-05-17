@@ -38,7 +38,7 @@
 		var productId = $routeParams.id
 		
 		
-		alert("Produkt ID: " + productId);
+		//alert("Produkt ID: " + productId);
 
 		$scope.product = {
 			id : 0,
@@ -61,12 +61,12 @@
 		}
 		
 		$scope.addProductToCart = function(id) {
-			alert("Product: " + id + " Antal: " + $scope.cart_product.count);
-			$http.get("AddProductToCart?productId=").then(onAddProductToCartComplete, onError);
+			alert("Prod:"+productId + " Antal: " + $scope.cart_product.count);
+			$http.get("AddProductToCart?productId="+productId+"&antal="+$scope.cart_product.count).then(onAddProductToCartComplete, onError);
 		};
 
 		// Get product by name
-		var tmp = "GetProduct?name=" + productId;
+		var tmp = "GetProductById?id=" + productId;
 		$http.get(tmp).then(onProductComplete, onError);
 	});
 
