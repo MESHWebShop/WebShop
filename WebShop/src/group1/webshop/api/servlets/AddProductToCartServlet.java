@@ -35,9 +35,9 @@ public class AddProductToCartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DatabaseHandler db = new DatabaseHandler();
 		
-		String productId = request.getParameter("productId");
+		String productId = request.getParameter("product_id");
 		String cartId = "1";
-		String count = "1";
+		String count = request.getParameter("count");
 
     	db.addProductToCart(productId, cartId, count);
     	response.getWriter().write("AddProductToCartServlet");

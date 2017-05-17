@@ -319,7 +319,8 @@ public class DatabaseHandler {
     	// Läs in count för en specifik product_cart-post
         CachedRowSet crs = null;
 		try {
-			crs = callStoredProcedure("get_count_from_cart_product", new Object[] {productId, cartId});
+			crs = executeQuery("SELECT count FROM cart_product WHERE product_id = " + productId + " AND cart_id = " + cartId);
+			//crs = callStoredProcedure("get_count_from_cart_product", new Object[] {productId, cartId});
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -327,12 +328,18 @@ public class DatabaseHandler {
 
         int countFromCartProduct = 0;
         try {
-            crs.first();
-            countFromCartProduct = crs.getInt("count");
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+			if (crs.next()) {
+				try {
+					countFromCartProduct = crs.getInt("count");
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
         try {
         	// Om posten finns, addera 1 till count.
