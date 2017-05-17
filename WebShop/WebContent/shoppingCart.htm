@@ -5,7 +5,7 @@
 		<tr>
 			<td><b>Märke</b></td>
 			<td><b>Name</b></td>
-			<td><b>Antal</b></td>
+			<td><b></b></td>
 			<td><b>Pris</b></td>
 			<td><b>Antal</b></td>
 			<td></td>
@@ -13,13 +13,13 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr data-ng-repeat="p in cart | filter:search | orderBy:'name'" class="product">
+		<tr data-ng-repeat="p in products | filter:search | orderBy:'name'" class="product">
 		<td>{{ p.manufacturer }}</td>
-		<td><a data-ng-href="#!/product/{{ p.name }}">{{ p.name }}</a></td>
-		<td>{{ p.description }}</td>
-		<td>{{ p.price }}</td>
-		<td>{{ p.count }} <button type="submit" data-ng-click="UppdateProducCountInCart(id)">Uppdatera antal</button></td>
+		<td><a data-ng-href="#!/product/{{ p.id }}">{{ p.name }}</a></td>
 		<td></td>
+		<td>{{ p.price }}</td>
+		<td><!-- <input type="text" data-ng-model="{{ p.count }}" placeholder="" /> --></td>
+		<td><button type="submit" data-ng-click="UppdateProductCountInCart(id)">Uppdatera antal</button></td>
 		<td><button type="submit" data-ng-click="removeProductFromCart(id)">Ta bort från varuvagn</button></td>
 		</tr>
 	</tbody>	

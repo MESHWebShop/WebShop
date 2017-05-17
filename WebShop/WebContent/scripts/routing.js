@@ -30,7 +30,7 @@
 			templateUrl : "about.htm",
 			controller : "aboutController" })
 		//Viev shoppingcart page
-		.when("/shoppingCart", {
+		.when("/shoppingCart/:cartid", {
 			templateUrl : "shoppingCart.htm",
 			controller : "shoppingCartController" })
 		//Other

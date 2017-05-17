@@ -3,7 +3,7 @@
 <table class="tableProduct">
 	<thead>
 		<tr>
-			<td>ID</td>
+			<td><!-- ID --></td>
 			<td><b>Märke</b></td>
 			<td><b>Name</b></td>
 			<td><b>Beskrivning</b></td>
@@ -13,7 +13,7 @@
 	</thead>
 	<tbody>
 		<tr data-ng-repeat="p in products | filter:search | orderBy:'manufacturer'" class="products">
-		<td>{{ p.id }}</td>
+		<td><!-- {{ p.id }} --></td>
 		<td><b>{{ p.manufacturer }}</b></td>
 		<td><a data-ng-href="#!/product/{{ p.id }}"><b>{{ p.name }}</b></a></td>
 		<td>{{ p.description }}</td>

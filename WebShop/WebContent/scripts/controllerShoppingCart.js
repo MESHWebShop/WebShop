@@ -7,26 +7,18 @@
 	controllerApplication.controller("shoppingCartController", function($scope, $http, $routeParams) {
 		$scope.title = "ShoppingCart";
 		
-		var productId = $routeParams.id
-		//alert("productName : " + productId);
+		var cartId = $routeParams.cartid;
 
-		$scope.product = {
-			id : 0,
-			name : "",
-			description : "",
-			price : "",
-		};
-
-		var onProductComplete = function(response) {
-			// alert ("Yay");
-			$scope.product = response.data;
+		var onCartComplete = function(response) {
+			$scope.products = response.data;
 		}
 
 		var onError = function(reason) {
 			$scope.name = "Could not fetch data! " + reason.status;
 		}
 
-		var tmp = "GetProduct?name=" + productId;
-		$http.get(tmp).then(onProductComplete, onError);
+		var tmp = "GetAllProductsInCart?cartId=" + cartId;
+		//alert(tmp);
+		$http.get(tmp).then(onCartComplete, onError);
 	});
 }());
