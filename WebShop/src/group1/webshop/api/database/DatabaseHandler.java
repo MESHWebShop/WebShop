@@ -267,7 +267,7 @@ public class DatabaseHandler {
 
     public ArrayList<CartProduct> getAllProductsInCart(int cartId)
             throws SQLException {
-        CachedRowSet crs = callStoredProcedure("get_all_products_from_cart", cartId);
+        CachedRowSet crs = callStoredProcedure("get_all_products_from_cart_product", cartId);
         //		CachedRowSet crs = executeQuery("SELECT * FROM cart_product");
         
         //ArrayList<Product> products = new ArrayList<Product>();
@@ -283,10 +283,9 @@ public class DatabaseHandler {
             cartProduct.setDescription(crs.getString("description"));
             cartProduct.setPrice(crs.getDouble("price"));
             cartProduct.setManufacturer(crs.getString("manufacturer"));
-            cartProduct.setCount(1);
-            //cartProduct.setCount(crs.getInt("count"));
+            cartProduct.setCount(crs.getInt("count"));
             cartProducts.add(cartProduct);
-            System.out.println(crs.getInt("id") + crs.getString("description") + crs.getDouble("price") + crs.getString("manufacturer") /*+ crs.getInt("count")*/ );
+            System.out.println(crs.getInt("id") + crs.getString("description") + crs.getDouble("price") + crs.getString("manufacturer") + crs.getInt("count") );
         }
         return cartProducts;
     }
