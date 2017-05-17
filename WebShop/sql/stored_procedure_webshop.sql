@@ -1,3 +1,4 @@
+DROP PROCEDURE IF EXISTS `add_account`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `add_account`(
 	IN id int(11),
@@ -12,6 +13,9 @@ END$$
 DELIMITER ;
 
 
+
+
+DROP PROCEDURE IF EXISTS `add_cart`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `add_cart`(
 	IN id int(11),
@@ -23,6 +27,10 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+
+
+DROP PROCEDURE IF EXISTS `add_cart_product`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `add_cart_product`(
 	 
@@ -37,6 +45,11 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+
+
+
+DROP PROCEDURE IF EXISTS `add_category`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `add_category`(
 	IN id int(11),
@@ -48,6 +61,10 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+
+
+DROP PROCEDURE IF EXISTS `add_count_to_cart_product`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `add_count_to_cart_product`(
 	
@@ -65,6 +82,9 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+
+DROP PROCEDURE IF EXISTS `add_customer`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `add_customer`(
 	IN id int(11),
@@ -77,7 +97,8 @@ BEGIN
 END$$
 DELIMITER ;
 
-CALL `webshop`.`add_order`(<{IN id int(11)}>, <{IN customer_id int(11)}>, <{in taxation_id int (11)}>);
+
+DROP PROCEDURE IF EXISTS `add_order`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `add_order`(
 	IN id int(11),
@@ -90,6 +111,9 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+
+DROP PROCEDURE IF EXISTS `add_order_product`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `add_order_product`(
 	IN id int(11),
@@ -104,6 +128,7 @@ END$$
 DELIMITER ;
 
 
+DROP PROCEDURE IF EXISTS `add_product`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `add_product`(
 	IN id int(11),
@@ -118,6 +143,8 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+DROP PROCEDURE IF EXISTS `add_product_to_cart_product`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `add_product_to_cart_product`(
 	
@@ -132,6 +159,8 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+DROP PROCEDURE IF EXISTS `delete_account_by_id`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_account_by_id`(IN id int(11))
 BEGIN
@@ -142,6 +171,7 @@ END$$
 DELIMITER ;
 
 
+DROP PROCEDURE IF EXISTS `delete_cart_by_id`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_cart_by_id`(IN id int(11))
 BEGIN
@@ -151,7 +181,7 @@ BEGIN
 END$$
 DELIMITER ;
 
-
+DROP PROCEDURE IF EXISTS `delete_cart_product_by_id`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_cart_product_by_id`(IN id int(11))
 BEGIN
@@ -161,6 +191,8 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+DROP PROCEDURE IF EXISTS `delete_category_by_id`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_category_by_id`(IN id int(11))
 BEGIN
@@ -170,6 +202,9 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+
+DROP PROCEDURE IF EXISTS `delete_customer_by_id`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_customer_by_id`(IN id int(11))
 BEGIN
@@ -180,16 +215,8 @@ END$$
 DELIMITER ;
 
 
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_dustomer_by_id`(IN id int(11))
-BEGIN
-	DELETE FROM customer
-    WHERE customer.id=id
-    COLLATE utf8_swedish_ci;
-END$$
-DELIMITER ;
 
-
+DROP PROCEDURE IF EXISTS `delete_order_by_id`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_order_by_id`(IN id int(11))
 BEGIN
@@ -199,6 +226,8 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+DROP PROCEDURE IF EXISTS `delete_order_product_by_id`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_order_product_by_id`(IN id int(11))
 BEGIN
@@ -208,6 +237,8 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+DROP PROCEDURE IF EXISTS `delete_product_by_id`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_product_by_id`(IN id int(11))
 BEGIN
@@ -217,6 +248,9 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+
+DROP PROCEDURE IF EXISTS `delete_product_category_by_id`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_product_category_by_id`(IN id int(11))
 BEGIN
@@ -226,6 +260,8 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+DROP PROCEDURE IF EXISTS `delete_product_image_by_id`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_product_image_by_id`(IN id int(11))
 BEGIN
@@ -235,7 +271,7 @@ BEGIN
 END$$
 DELIMITER ;
 
-
+DROP PROCEDURE IF EXISTS `delete_stored_product_by_id`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_stored_product_by_id`(IN id int(11))
 BEGIN
@@ -245,7 +281,7 @@ BEGIN
 END$$
 DELIMITER ;
 
-
+DROP PROCEDURE IF EXISTS `delete_taxation_by_id`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_taxation_by_id`(IN id int(11))
 BEGIN
@@ -256,6 +292,8 @@ END$$
 DELIMITER ;
 
 
+
+DROP PROCEDURE IF EXISTS `get_account_by_email`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_account_by_email`(IN username varchar(60))
 BEGIN
@@ -267,6 +305,8 @@ END$$
 DELIMITER ;
 
 
+
+DROP PROCEDURE IF EXISTS `get_account_by_username`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_account_by_username`(IN username varchar(60))
 BEGIN
@@ -277,22 +317,20 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+DROP PROCEDURE IF EXISTS `get_all_products_from_cart`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_all_products_from_cart`()
-BEGIN
-
-    
+BEGIN    
 SELECT cart_product.product_id, product.id
 FROM product
 INNER JOIN cart_product
-ON cart_product.product_id= product.id;  
-  
-  
-  
-    
+ON cart_product.product_id= product.id;    
 END$$
 DELIMITER ;
 
+
+DROP PROCEDURE IF EXISTS `get_all_products_from_cart_product`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_all_products_from_cart_product`(IN cart_id int(11))
 BEGIN
@@ -303,6 +341,8 @@ ON cart_product.product_id= product.id;
 END$$
 DELIMITER ;
 
+
+DROP PROCEDURE IF EXISTS `get_category_by_name`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_category_by_name`(IN name varchar(60))
 BEGIN
@@ -313,6 +353,9 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+
+DROP PROCEDURE IF EXISTS `get_order_by_customer_id`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_order_by_customer_id`(
 IN customer_id int(11))
@@ -324,7 +367,7 @@ BEGIN
 END$$
 DELIMITER ;
 
-
+DROP PROCEDURE IF EXISTS `get_order_product_by_order_id`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_order_product_by_order_id`(IN order_id int(11))
 BEGIN
@@ -336,6 +379,8 @@ END$$
 DELIMITER ;
 
 
+
+DROP PROCEDURE IF EXISTS `get_prod`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_prod`(IN product_id int(11))
 BEGIN
@@ -345,6 +390,8 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+DROP PROCEDURE IF EXISTS `get_product_by_id`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_product_by_id`(
 IN id int(11)
@@ -356,6 +403,8 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+DROP PROCEDURE IF EXISTS `get_product_by_name`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_product_by_name`(IN name VARCHAR(60))
 BEGIN
@@ -365,6 +414,9 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+
+DROP PROCEDURE IF EXISTS `get_product_by_price`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_product_by_price`(IN price double)
 BEGIN
@@ -375,10 +427,11 @@ END$$
 DELIMITER ;
 
 
+
+DROP PROCEDURE IF EXISTS `get_product_from_cart`;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_product_from_cart`(IN id int(11))
 BEGIN
-
 SELECT  product.id ,product.name, product.description, product.price, product.manufacturer
 FROM cart_product
 INNER join product
@@ -389,19 +442,7 @@ where cart_id=id
 END$$
 DELIMITER ;
 
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `product`(
-	IN id int(11),
-    IN name varchar(60),
-    IN description varchar(1024),
-    IN price double,
-    in manufacturer varchar(60)
-)
-BEGIN
-	INSERT INTO product
-    VALUES (id,name,description,price,manufacturer);
-END$$
-DELIMITER ;
+
 
 
 
