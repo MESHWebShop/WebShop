@@ -18,9 +18,9 @@
 		<td><a data-ng-href="#!/product/{{ p.id }}">{{ p.name }}</a></td>
 		<td></td>
 		<td>{{ p.price }}</td>
-		<td><!-- <input type="text" data-ng-model="{{ p.count }}" placeholder="" /> --></td>
-		<td><button type="submit" data-ng-click="UppdateProductCountInCart(id)">Uppdatera antal</button></td>
-		<td><button type="submit" data-ng-click="removeProductFromCart(id)">Ta bort från varuvagn</button></td>
+		<td><input type="text" value="{{ p.count }}" size="3"/></td>
+		<td><button type="submit" data-ng-click="updateProductCountInCart(p.id)">Uppdatera antal</button></td>
+		<td><button type="submit" data-ng-click="deleteProduct(p.id)">Ta bort från varuvagn</button></td>
 		</tr>
 	</tbody>	
 </table>

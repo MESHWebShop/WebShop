@@ -3,6 +3,21 @@ body {
 	font-family: Arial, Helvetica, Sans Serif;
 }
 
+/* unvisited link */
+a:link {
+    color: red;
+}
+
+/* visited link */
+a:visited {
+    color: green;
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+}
+
 .title {
 	font-family: 'Ravi Prakash';
 	font-size: 48px;

@@ -8,6 +8,17 @@
 		$scope.title = "ShoppingCart";
 		
 		var cartId = $routeParams.cartid;
+		
+		$scope.deleteProduct = function(productId) {
+			//alert("Product ID "+productId);
+			//$scope.shoppingCart.splice(index, 1);
+			$http.get("RemoveProductFromCart?cartId=1&productId=" + productId);
+
+		};
+		
+		$scope.updateProductCountInCart = function(productId){
+			alert("Product ID: "+productId +" Antal: ")
+		}
 
 		var onCartComplete = function(response) {
 			$scope.products = response.data;

@@ -13,8 +13,8 @@
 		<tbody>
 			<tr>
 				<td>{{ product.description }}.</td>
-				<td>Pris: {{ product.price }}</td>
-				<td><input type="text" data-ng-model="cart_product.count" name="count" value="1"></td>
+				<td>Pris: {{ product.price }} </td>
+				<td>Antal: <input type="text" data-ng-model="cart_product.count" value="1" size="3"placeholder="1"></td>
 				<td><button type="submit" data-ng-click="addProductToCart(id)">Lägg i varukorg</button></td>
 			</tr>
 		</tbody>
