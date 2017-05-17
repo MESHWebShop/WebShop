@@ -41,6 +41,7 @@ public class AddProductToCartServlet extends HttpServlet {
 
     	db.addProductToCart(productId, cartId, count);
     	response.getWriter().write("AddProductToCartServlet");
+    	/
 	}
 
 	/**

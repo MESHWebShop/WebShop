@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import group1.webshop.api.beans.CartProduct;
 import group1.webshop.api.beans.Product;
 import group1.webshop.api.database.DatabaseHandler;
 
@@ -35,16 +36,16 @@ public class GetAllProductsInCartServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	DatabaseHandler db = new DatabaseHandler();
-    	ArrayList<Product> products = null;
+    	ArrayList<CartProduct> cartProducts = null;
     	int cartId = Integer.parseInt(request.getParameter("cartId"));
 		
     	try {
-			products = db.getAllProductsInCart(cartId);
+			cartProducts = db.getAllProductsInCart(cartId);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
     	
-    	String json = new Gson().toJson(products);
+    	String json = new Gson().toJson(cartProducts);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);

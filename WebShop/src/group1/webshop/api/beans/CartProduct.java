@@ -17,6 +17,6 @@ public class CartProduct extends Product {
 		this.count = count;
 	}
 	
-	CartProduct() { }
+	public CartProduct() { }
 
 }

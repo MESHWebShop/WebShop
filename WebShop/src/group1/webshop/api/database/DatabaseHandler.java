@@ -11,6 +11,7 @@ import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
 
 import group1.webshop.api.beans.Account;
+import group1.webshop.api.beans.CartProduct;
 import group1.webshop.api.beans.Product;
 
 public class DatabaseHandler {
@@ -264,23 +265,30 @@ public class DatabaseHandler {
         return products;
     }
 
-    public ArrayList<Product> getAllProductsInCart(int cartId)
+    public ArrayList<CartProduct> getAllProductsInCart(int cartId)
             throws SQLException {
         CachedRowSet crs = callStoredProcedure("get_all_products_from_cart", cartId);
         //		CachedRowSet crs = executeQuery("SELECT * FROM cart_product");
         
-        ArrayList<Product> products = new ArrayList<Product>();
-       
+        //ArrayList<Product> products = new ArrayList<Product>();
+        ArrayList<CartProduct> cartProducts = new ArrayList<CartProduct>();
+        
+        System.out.println("getAllProductsInCart körs.");
+        
         while (crs.next()) {
-            Product product = new Product();
-            product.setId(crs.getInt("id"));
-            product.setName(crs.getString("name"));
-            product.setDescription(crs.getString("description"));
-            product.setPrice(crs.getDouble("price"));
-            product.setManufacturer(crs.getString("manufacturer"));
-            products.add(product);
+            CartProduct cartProduct = new CartProduct();
+            cartProduct.setId(crs.getInt("id"));
+            
+            cartProduct.setName(crs.getString("name"));
+            cartProduct.setDescription(crs.getString("description"));
+            cartProduct.setPrice(crs.getDouble("price"));
+            cartProduct.setManufacturer(crs.getString("manufacturer"));
+            cartProduct.setCount(1);
+            //cartProduct.setCount(crs.getInt("count"));
+            cartProducts.add(cartProduct);
+            System.out.println(crs.getInt("id") + crs.getString("description") + crs.getDouble("price") + crs.getString("manufacturer") /*+ crs.getInt("count")*/ );
         }
-        return products;
+        return cartProducts;
     }
     
     public void removeProduct(int productId)
@@ -427,6 +435,8 @@ public class DatabaseHandler {
             }
             
             db.addProductToCart("3", "1", "1");
+            
+            db.getAllProductsInCart(1);
             //		db.addProductToCart("4", "1", "1");
             //db.addProductToCart("3", "1", "1");
     
