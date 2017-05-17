@@ -12,7 +12,7 @@
 		$scope.deleteProduct = function(productId) {
 			//alert("Product ID "+productId);
 			//$scope.shoppingCart.splice(index, 1);
-			$http.get("RemoveProductFromCart?cartId=1&productId=" + productId);
+			$http.get("RemoveProductFromCart?cartId=1&productId=" + productId).then(onCartComplete, onError);
 
 		};
 		

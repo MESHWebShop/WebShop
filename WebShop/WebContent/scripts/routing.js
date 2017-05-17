@@ -10,26 +10,26 @@
 	routingApplication.config(function($routeProvider) {
 
 		$routeProvider.when("/", {
-		//Main viev
+		//Main view
 			templateUrl : "main.htm",
 			controller : "homeController" })
-		//Viev all products
+		//View all products
 		.when("/products", {
 			templateUrl : "products.htm",
 			controller : "productsController" })
-		//Viev one product
+		//View one product
 		.when("/product/:id", {
 			templateUrl : "product.htm",
 			controller : "productController" })
-		//Viev contact page
+		//View contact page
 		.when("/contact", {
 			templateUrl : "contact.htm",
 			controller : "contactController" })
-		//Viev about page
+		//View about page
 		.when("/about", {
 			templateUrl : "about.htm",
 			controller : "aboutController" })
-		//Viev shoppingcart page
+		//View shoppingcart page
 		.when("/shoppingCart/:cartid", {
 			templateUrl : "shoppingCart.htm",
 			controller : "shoppingCartController" })
