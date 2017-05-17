@@ -14,7 +14,7 @@ CREATE PROCEDURE `add_product` (
 )
 BEGIN
 	INSERT INTO product
-    VALUES (id,name,description,price,manufacturer);
+    VALUES (null,name,description,price,manufacturer);
 END$$
 
 DELIMITER ;
