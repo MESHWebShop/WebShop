@@ -34,8 +34,8 @@ public abstract class JsonMapValidator {
      * Validates the JSON data map to this validator
      * 
      * @param jsonMap JSON data map
-     * @param key
-     * @return JSON error text
+     * @param key Key
+     * @return Error map
      */
     public Map<String, Object> validate(Map<String, Object> jsonMap) {
         return validate(getValidationMap(), jsonMap);
@@ -47,9 +47,9 @@ public abstract class JsonMapValidator {
      * @param validationMap Validation map
      * @param jsonMap JSON map
      * @param key Key
-     * @return
+     * @return Error map
      */
-    @SuppressWarnings({ "unchecked", "serial" })
+    @SuppressWarnings({ "unchecked" })
     private Map<String, Object> validate(Map<String, Object> validationMap, Map<String, Object> jsonMap) {
         final Map<String, Object> errMap = new HashMap<>();
 
@@ -58,11 +58,10 @@ public abstract class JsonMapValidator {
                     && JsonMapValidatorEntry.class.isInstance(v)
                     && ((JsonMapValidatorEntry) v).isRequired()) {
                 // Tests if the map contains the required key
-                errMap.put(k, new HashMap<String, Object>() {
-                    {
-                        put("ERR_MISSINGKEY", "Key is missing");
-                    }
-                });
+                final Map<String, Object> tempMap = new HashMap<>();
+                tempMap.put("ERR_MISSINGKEY", "Key is missing");
+
+                errMap.put(k, tempMap);
             } else if (Map.class.isInstance(validationMap.get(k))) {
                 // Tests if the validation entry is a map
                 if (Map.class.isInstance(jsonMap.get(k))) {
@@ -76,17 +75,18 @@ public abstract class JsonMapValidator {
                     }
                 } else {
                     // Otherwise add an error
-                    errMap.put(k, new HashMap<String, Object>() {
-                        {
-                            put("ERR_NONMAP", "Not a map object");
-                        }
-                    });
+                    final Map<String, Object> tempMap = new HashMap<>();
+                    tempMap.put("ERR_NONMAP", "Not a map object");
+
+                    errMap.put(k, tempMap);
                 }
             } else {
                 try {
-                    putIfNotEmpty(errMap, k, ((JsonMapValidatorEntry) v)
-                            .test(jsonMap.get(k)));
+                    Map<String, Object> result = ((JsonMapValidatorEntry) v)
+                            .test(jsonMap.get(k));
+                    putIfNotEmpty(errMap, k, result);
                 } catch (ClassCastException e) {
+                    e.printStackTrace();
                     errMap.put("ERR_SERVER", "Server side error");
                 }
             }

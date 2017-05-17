@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
 /**
  * JSON Map entry tester class
@@ -229,6 +230,23 @@ public class JsonMapValidatorEntry {
                 (obj) -> {
                     String value = (String) obj;
                     return value.length() >= minLength && value.length() <= maxLength;
+                }));
+    }
+
+    /**
+     * Adds a test for parameter pattern match (requires a String instance) and
+     * pipes it to a new tester instance
+     * 
+     * @param pattern Patern object
+     * @return New entry tester
+     */
+    public JsonMapValidatorEntry matches(final Pattern pattern) {
+        return addErrCheckAndPipe(new ErrCheckInfo(
+                "ERR_FORMAT",
+                "Invalid input format",
+                (obj) -> {
+                    String value = (String) obj;
+                    return pattern.matcher(value).matches();
                 }));
     }
 
