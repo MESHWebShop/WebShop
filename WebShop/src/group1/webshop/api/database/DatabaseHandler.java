@@ -211,7 +211,24 @@ public class DatabaseHandler {
 
         return product;
     }
+    
+    public Product getProductById(int productId) throws SQLException {
+        // TODO Auto-generated method stub
+        CachedRowSet crs = 
+                executeQuery("select * from product where id="+productId);
+                //callStoredProcedure("get_product_by_name", name);
+        crs.next();
 
+        Product product = new Product();
+        product.setId(crs.getInt("id"));
+        product.setName(crs.getString("name"));
+        product.setDescription(crs.getString("description"));
+        product.setPrice(crs.getDouble("price"));
+        product.setManufacturer(crs.getString("manufacturer"));
+
+        return product;
+    }
+    
     /**
      * Tests if an account exists in the database
      * 

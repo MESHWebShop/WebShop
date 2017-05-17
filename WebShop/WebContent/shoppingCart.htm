@@ -9,6 +9,7 @@
 			<td><b>Pris</b></td>
 			<td><b>Antal</b></td>
 			<td></td>
+			<td></td>
 		</tr>
 	</thead>
 	<tbody>
@@ -17,8 +18,9 @@
 		<td><a data-ng-href="#!/product/{{ p.name }}">{{ p.name }}</a></td>
 		<td>{{ p.description }}</td>
 		<td>{{ p.price }}</td>
-		<td>{{ p.count }}</td>
-		<td><button type="submit" data-ng-click="removeProductFromCart(p.id)">Ta bort från varuvagn</button></td>
+		<td>{{ p.count }} <button type="submit" data-ng-click="UppdateProducCountInCart(id)">Uppdatera antal</button></td>
+		<td></td>
+		<td><button type="submit" data-ng-click="removeProductFromCart(id)">Ta bort från varuvagn</button></td>
 		</tr>
 	</tbody>	
 </table>

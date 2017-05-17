@@ -36,7 +36,7 @@ public class GetProductById extends HttpServlet {
         DatabaseHandler db = new DatabaseHandler();
         Product product = null;
         int productId = new Integer(request.getParameter("id")).intValue();
-        System.out.println("prodUd" +productId);
+        System.out.println("prodId" +productId);
         try {
             product = db.getProductById(productId);
         } catch (SQLException e) {
